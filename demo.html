@@ -1,5 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Client Intake System — Live Demo | IA AI Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0c1b30; --navy2: #162845; --gold: #c9a84c; --gold2: #e8c96e;
+  --cream: #f8f5f0; --cream2: #ede8e0; --text: #1a1a2e; --muted: #6b7280;
+  --white: #ffffff; --green: #16a34a; --red: #dc2626;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); min-height: 100vh; }
+
+nav {
+  background: var(--navy); padding: 0 40px; height: 60px; display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(201,168,76,0.2);
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; }
+.nav-logo-icon {
+  width: 32px; height: 32px; background: var(--gold); border-radius: 8px; display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 600; color: var(--navy);
+}
+.nav-logo-name { font-size: 15px; font-weight: 500; color: var(--white); letter-spacing: 0.02em; }
+.nav-logo-name span { color: var(--gold); }
+.nav-tag { font-size: 11px; color: rgba(255,255,255,0.4); letter-spacing: 0.08em; }
+.nav-badge {
+  font-size: 11px; padding: 4px 12px; background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 20px; color: var(--gold); letter-spacing: 0.05em;
+}
+
+.hero {
+  background: var(--navy); padding: 52px 40px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+  align-items: center; border-bottom: 1px solid rgba(201,168,76,0.15);
+}
+.hero-eyebrow { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; font-weight: 500; }
+.hero-title { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 600; color: var(--white); line-height: 1.15; margin-bottom: 16px; }
+.hero-title span { color: var(--gold2); }
+.hero-sub { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.75; margin-bottom: 28px; }
+
+.demo-bar {
+  background: var(--navy2); border-bottom: 1px solid rgba(201,168,76,0.15); padding: 14px 40px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+}
+.demo-hints { display: flex; gap: 8px; flex-wrap: wrap; }
+.hint-chip {
+  padding: 5px 12px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 16px; font-size: 11.5px; color: rgba(255,255,255,0.65); cursor: pointer;
+}
+.hint-chip:hover { background: rgba(201,168,76,0.15); color: var(--gold); }
+
+.demo-area { display: grid; grid-template-columns: 1fr 380px; gap: 0; height: calc(100vh - 220px); min-height: 520px; }
+.chat-panel { display: flex; flex-direction: column; border-right: 1px solid var(--cream2); background: var(--white); }
+.chat-header {
+  background: var(--navy); padding: 14px 20px; display: flex; align-items: center; gap: 12px; flex-shrink: 0;
+}
+.chat-av {
+  width: 38px; height: 38px; border-radius: 50%; background: var(--gold); display: flex; align-items: center;
+  justify-content: center; font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 600; color: var(--navy);
+}
+.chat-body {
+  flex: 1; overflow-y: auto; padding: 20px 16px; background: var(--cream); display: flex; flex-direction: column; gap: 10px;
+}
+.msg { display: flex; gap: 8px; max-width: 88%; }
+.msg.b { align-self: flex-start; }
+.msg.u { align-self: flex-end; flex-direction: row-reverse; }
+.bubble { padding: 10px 14px; border-radius: 14px; font-size: 13.5px; line-height: 1.55; }
+.msg.b .bubble { background: var(--white); border: 1px solid var(--cream2); }
+.msg.u .bubble { background: var(--navy); color: var(--white); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.chip { padding: 5px 12px; background: var(--white); border: 1px solid var(--gold); border-radius: 20px; font-size: 12px; color: var(--navy); cursor: pointer; }
+.chip:hover { background: var(--navy); color: var(--white); }
+
+.record-panel { background: var(--cream); display: flex; flex-direction: column; }
+.rec-header {
+  background: var(--navy); padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0;
+}
+.rec-badge { font-size: 10px; padding: 3px 9px; background: rgba(201,168,76,0.15); color: var(--gold); border-radius: 4px; }
+.rec-badge.live { background: rgba(74,222,128,0.15); color: #4ade80; }
+
+.memo-btn {
+  width: 100%; padding: 10px; background: var(--navy); color: var(--gold); border: none;
+  border-radius: 10px; font-size: 12.5px; cursor: pointer; margin: 10px 0;
+}
+.memo-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+@media (max-width: 768px) {
+  .demo-area { grid-template-columns: 1fr; }
+  .record-panel { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-icon">IA</div>
+    <div>
+      <div class="nav-logo-name"><span>IA</span> AI Solutions</div>
+      <div class="nav-tag">AI-powered client systems</div>
+    </div>
+  </div>
+  <div class="nav-badge">Live Demo</div>
+</nav>
+
+<div class="hero">
+  <div>
+    <div class="hero-eyebrow">Built for The International Law Firm of Hassan Mahassni</div>
+    <h1 class="hero-title">AI Client Intelligence<br>& <span>Intake System</span></h1>
+    <p class="hero-sub">Professional AI assistant that handles client enquiries 24/7 in Arabic, English & French and automatically builds structured intake records.</p>
+  </div>
+</div>
+
+<div class="demo-bar">
+  <div>Try it now — click a suggestion or type below</div>
+  <div class="demo-hints">
+    <div class="hint-chip" onclick="inject('I need help with a corporate acquisition in Saudi Arabia')">Corporate acquisition</div>
+    <div class="hint-chip" onclick="inject('We have a dispute going to arbitration next month')">Urgent arbitration</div>
+    <div class="hint-chip" onclick="inject('أحتاج مساعدة في نزاع تجاري')">Arabic enquiry</div>
+    <div class="hint-chip" onclick="inject('I need advice on a real estate transaction in Jeddah')">Real estate</div>
+    <div class="hint-chip" onclick="inject('J\'ai besoin d\'aide avec un contrat commercial')">French enquiry</div>
+  </div>
+</div>
+
+<div class="demo-area">
+  <!-- Chat Panel -->
+  <div class="chat-panel">
+    <div class="chat-header">
+      <div class="chat-av">M</div>
+      <div>
+        <div>Hassan Mahassni — Legal Assistant</div>
+        <div style="font-size:11px;color:var(--gold);">Online • Intake in progress</div>
+      </div>
+    </div>
+    <div class="chat-body" id="chat-body"></div>
+    <div style="padding:12px 16px;background:var(--white);border-top:1px solid var(--cream2);">
+      <div style="display:flex;gap:8px;">
+        <textarea id="ti" rows="1" placeholder="Type your legal enquiry here..." 
+          style="flex:1;padding:10px;border:1px solid var(--cream2);border-radius:8px;resize:none;font-size:13.5px;"
+          onkeydown="if(event.key==='Enter' && !event.shiftKey){event.preventDefault();send();}"></textarea>
+        <button id="sb" onclick="send()" 
+          style="width:42px;height:42px;background:var(--navy);color:var(--gold);border:none;border-radius:8px;cursor:pointer;">
+          Send
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Live Intake Record Panel -->
+  <div class="record-panel">
+    <div class="rec-header">
+      <div>Live Intake Record</div>
+      <div class="rec-badge" id="rec-badge">Awaiting input</div>
+    </div>
+    <div style="padding:15px;">
+      <button id="memo-btn" class="memo-btn" onclick="genMemo()">Generate Intake Memorandum</button>
+      <div id="memo-area" style="display:none;">
+        <div id="memo-out" style="background:white;padding:12px;border:1px solid var(--cream2);border-radius:8px;white-space:pre-wrap;font-size:12px;max-height:200px;overflow:auto;"></div>
+        <button onclick="cpMemo()" style="margin-top:8px;width:100%;padding:8px;background:transparent;border:1px solid var(--cream2);border-radius:6px;cursor:pointer;">Copy to clipboard</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
-// ==================== CORRECTED SCRIPT (April 2026) ====================
+// ==================== FULLY FIXED SCRIPT ====================
 const BACKEND_URL = "https://mahassni-bot.onrender.com";
 
 let msgs = [];
@@ -12,17 +178,22 @@ function init(){
     ['Corporate & M&A','Banking & Finance','Dispute Resolution','Project Finance','Real Estate','Other matter']);
 }
 
+function safeGet(id) { return document.getElementById(id); }
+
 function addBot(txt, chips = []){
-  const c = document.getElementById('chat-body');
+  const c = safeGet('chat-body');
+  if (!c) return;
   const d = document.createElement('div'); d.className = 'msg b';
-  d.innerHTML = `<div class="av">M</div><div><div class="bubble">${txt.replace(/\n/g,'<br>')}</div>${chips.length ? `<div class="chips">${chips.map(x => `<span class="chip" onclick="pick('${x}')">${x}</span>`).join('')}</div>` : ''}</div>`;
+  let chipsHTML = chips.length ? `<div class="chips">${chips.map(x => `<span class="chip" onclick="pick('${x}')">${x}</span>`).join('')}</div>` : '';
+  d.innerHTML = `<div class="av">M</div><div><div class="bubble">${txt.replace(/\n/g,'<br>')}</div>${chipsHTML}</div>`;
   c.appendChild(d);
   c.scrollTop = c.scrollHeight;
   transcript.push('Assistant: ' + txt);
 }
 
 function addUser(txt){
-  const c = document.getElementById('chat-body');
+  const c = safeGet('chat-body');
+  if (!c) return;
   const d = document.createElement('div'); d.className = 'msg u';
   d.innerHTML = `<div><div class="bubble">${txt}</div></div>`;
   c.appendChild(d);
@@ -31,22 +202,27 @@ function addUser(txt){
 }
 
 function showTyping(){
-  const c = document.getElementById('chat-body');
+  const c = safeGet('chat-body');
+  if (!c) return;
   const d = document.createElement('div'); d.className = 'msg b'; d.id = 'tind';
   d.innerHTML = '<div class="av">M</div><div class="typing"><div class="td"></div><div class="td"></div><div class="td"></div></div>';
   c.appendChild(d); c.scrollTop = c.scrollHeight;
 }
 
-function rmTyping(){ const t = document.getElementById('tind'); if(t) t.remove(); }
+function rmTyping(){ const t = safeGet('tind'); if(t) t.remove(); }
 
-function pick(txt){ document.querySelectorAll('.chip').forEach(c => c.style.pointerEvents='none'); process(txt); }
-function inject(txt){ document.getElementById('ti').value = txt; send(); }
+function pick(txt){ process(txt); }
+function inject(txt){ 
+  const el = safeGet('ti'); 
+  if(el){ el.value = txt; send(); }
+}
 
 function send(){
-  const el = document.getElementById('ti');
+  const el = safeGet('ti');
+  if(!el) return;
   const t = el.value.trim();
   if(!t || typing) return;
-  el.value = ''; el.style.height = 'auto';
+  el.value = '';
   process(t);
 }
 
@@ -58,7 +234,8 @@ async function process(txt){
 
 async function callAPI(){
   typing = true;
-  document.getElementById('sb').disabled = true;
+  const sendBtn = safeGet('sb');
+  if(sendBtn) sendBtn.disabled = true;
   showTyping();
 
   try {
@@ -69,12 +246,10 @@ async function callAPI(){
     });
 
     const data = await r.json();
-
-    if (data.error) throw new Error(data.error || "Server error");
+    if (data.error) throw new Error(data.error);
 
     let reply = data.reply || "I apologise — please try again.";
 
-    // Extract intake data
     const m = reply.match(/\|\|\|INTAKE\|\|\|(\{.*?\})\|\|\|END\|\|\|/s);
     if (m) {
       try {
@@ -93,13 +268,15 @@ async function callAPI(){
     rmTyping();
     addBot(reply);
 
-    const badge = document.getElementById('rec-badge');
-    badge.classList.add('live');
-    badge.textContent = 'Updated';
-    setTimeout(() => {
-      badge.classList.remove('live');
-      badge.textContent = 'Recording';
-    }, 1800);
+    const badge = safeGet('rec-badge');
+    if(badge){
+      badge.classList.add('live');
+      badge.textContent = 'Updated';
+      setTimeout(() => {
+        badge.classList.remove('live');
+        badge.textContent = 'Recording';
+      }, 1800);
+    }
 
   } catch(e) {
     rmTyping();
@@ -108,36 +285,27 @@ async function callAPI(){
   }
 
   typing = false;
-  document.getElementById('sb').disabled = false;
+  const sendBtn = safeGet('sb');
+  if(sendBtn) sendBtn.disabled = false;
 }
 
 function updateRec(){
-  const map = {name:'rf-name',org:'rf-org',contact:'rf-contact',juris:'rf-juris',lang:'rf-lang',
-               area:'rf-area',sum:'rf-sum',dates:'rf-dates',parties:'rf-parties'};
-  Object.entries(map).forEach(([k, id]) => {
-    const el = document.getElementById(id);
-    if (el && rec[k] && rec[k] !== '...') {
-      el.textContent = rec[k];
-      el.classList.remove('empty');
-      el.classList.add('flash');
-      setTimeout(() => el.classList.remove('flash'), 700);
+  const fields = {
+    name: 'rf-name', org: 'rf-org', contact: 'rf-contact', juris: 'rf-juris',
+    lang: 'rf-lang', area: 'rf-area', sum: 'rf-sum', dates: 'rf-dates', parties: 'rf-parties'
+  };
+  Object.entries(fields).forEach(([key, id]) => {
+    const el = safeGet(id);
+    if (el && rec[key] && rec[key] !== '...') {
+      el.textContent = rec[key];
     }
   });
-
-  const urgEl = document.getElementById('rf-urg');
-  if (urgEl) {
-    if (rec.urg === 'high') urgEl.innerHTML = '<span class="urg-h">High — priority follow-up</span>';
-    else if (rec.urg === 'normal') urgEl.innerHTML = '<span class="urg-n">Normal</span>';
-    else urgEl.innerHTML = '<span class="urg-u">Not assessed</span>';
-  }
 }
 
 async function genMemo(){
-  const btn = document.getElementById('memo-btn');
+  const btn = safeGet('memo-btn');
   if(!msgs.length){ alert('Please have a conversation first.'); return; }
-
-  btn.disabled = true;
-  btn.textContent = 'Generating memorandum…';
+  if(btn) { btn.disabled = true; btn.textContent = 'Generating...'; }
 
   try {
     const r = await fetch(`${BACKEND_URL}/generate-doc`, {
@@ -145,32 +313,28 @@ async function genMemo(){
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ transcript: transcript.join('\n'), intake: rec })
     });
-
     const d = await r.json();
-    document.getElementById('memo-out').textContent = d.document || d.error || 'Generation failed.';
-    document.getElementById('memo-area').style.display = 'block';
-    btn.textContent = 'Memorandum generated';
-    btn.classList.add('done');
+    const memoOut = safeGet('memo-out');
+    if(memoOut) memoOut.textContent = d.document || d.error || 'Generation failed.';
+    const memoArea = safeGet('memo-area');
+    if(memoArea) memoArea.style.display = 'block';
   } catch(e) {
-    btn.disabled = false;
-    btn.textContent = 'Generate intake memorandum';
     alert('Failed to generate memo. Please try again.');
     console.error(e);
   }
+
+  if(btn) { btn.disabled = false; btn.textContent = 'Generate Intake Memorandum'; }
 }
 
 function cpMemo(){
-  const text = document.getElementById('memo-out').textContent;
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.querySelector('.copy-btn');
-    const original = btn.textContent;
-    btn.textContent = 'Copied!';
-    setTimeout(() => btn.textContent = original, 2000);
-  });
+  const text = safeGet('memo-out') ? safeGet('memo-out').textContent : '';
+  if(text) {
+    navigator.clipboard.writeText(text).then(() => alert('Copied to clipboard!'));
+  }
 }
 
-function hk(e){ if(e.key === 'Enter' && !e.shiftKey){ e.preventDefault(); send(); } }
-function ar(el){ el.style.height = 'auto'; el.style.height = Math.min(el.scrollHeight, 80) + 'px'; }
-
 init();
+console.log("✅ Demo fully loaded - Backend:", BACKEND_URL);
 </script>
+</body>
+</html>
