@@ -9,13 +9,7 @@ from email.mime.text import MIMEText
 app = Flask(__name__)
 CORS(app)
 
-# ── SET THESE AS ENVIRONMENT VARIABLES ON RENDER.COM ────────────────────
-# ANTHROPIC_API_KEY   your Anthropic key
-# EMAIL_SENDER        Gmail you send FROM  e.g. mahassni.intake@gmail.com
-# EMAIL_PASSWORD      Gmail App Password (16 chars — NOT your Gmail login)
-# EMAIL_RECIPIENT     Firm receives alerts  e.g. intake@mahassni.com.sa
-# CALENDLY_URL        e.g. https://calendly.com/mahassni/consultation
-# ────────────────────────────────────────────────────────────────────────
+
 
 client          = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
 EMAIL_SENDER    = os.environ.get("EMAIL_SENDER", "")
@@ -129,7 +123,7 @@ def chat():
         data     = request.json
         messages = data.get("messages", [])
         response = client.messages.create(
-            model="claude-sonnet-4-20250514",
+            model="claude-sonnet-4-6",
             max_tokens=1000,
             system=SYSTEM_PROMPT,
             messages=messages
