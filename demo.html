@@ -1,30 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Client Intake System — Live Demo | IA AI Solutions</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  /* Your existing CSS remains exactly the same — I kept it unchanged */
-  :root {
-    --navy: #0c1b30; --navy2: #162845; --gold: #c9a84c; --gold2: #e8c96e;
-    --cream: #f8f5f0; --cream2: #ede8e0; --text: #1a1a2e; --muted: #6b7280;
-    --white: #ffffff; --green: #16a34a; --red: #dc2626;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); min-height: 100vh; }
-  /* ... (all your previous CSS styles here - paste them as they are) ... */
-  /* For brevity, I'm omitting the full CSS in this message. Keep your original <style> block unchanged. */
-</style>
-</head>
-<body>
-<!-- NAV, HERO, DEMO BAR, and HTML structure remain exactly the same as your current file -->
-
-<!-- CHAT and RECORD panels stay the same -->
-
 <script>
-// ==================== UPDATED SCRIPT ====================
+// ==================== CORRECTED SCRIPT (April 2026) ====================
 const BACKEND_URL = "https://mahassni-bot.onrender.com";
 
 let msgs = [];
@@ -41,7 +16,8 @@ function addBot(txt, chips = []){
   const c = document.getElementById('chat-body');
   const d = document.createElement('div'); d.className = 'msg b';
   d.innerHTML = `<div class="av">M</div><div><div class="bubble">${txt.replace(/\n/g,'<br>')}</div>${chips.length ? `<div class="chips">${chips.map(x => `<span class="chip" onclick="pick('${x}')">${x}</span>`).join('')}</div>` : ''}</div>`;
-  c.appendChild(d); c.scrollTop = c.scrollHeight;
+  c.appendChild(d);
+  c.scrollTop = c.scrollHeight;
   transcript.push('Assistant: ' + txt);
 }
 
@@ -49,7 +25,8 @@ function addUser(txt){
   const c = document.getElementById('chat-body');
   const d = document.createElement('div'); d.className = 'msg u';
   d.innerHTML = `<div><div class="bubble">${txt}</div></div>`;
-  c.appendChild(d); c.scrollTop = c.scrollHeight;
+  c.appendChild(d);
+  c.scrollTop = c.scrollHeight;
   transcript.push('Client: ' + txt);
 }
 
@@ -66,7 +43,8 @@ function pick(txt){ document.querySelectorAll('.chip').forEach(c => c.style.poin
 function inject(txt){ document.getElementById('ti').value = txt; send(); }
 
 function send(){
-  const el = document.getElementById('ti'); const t = el.value.trim();
+  const el = document.getElementById('ti');
+  const t = el.value.trim();
   if(!t || typing) return;
   el.value = ''; el.style.height = 'auto';
   process(t);
@@ -92,17 +70,19 @@ async function callAPI(){
 
     const data = await r.json();
 
-    if (data.error) throw new Error(data.error);
+    if (data.error) throw new Error(data.error || "Server error");
 
-    let reply = data.reply || 'I apologise — please try again.';
+    let reply = data.reply || "I apologise — please try again.";
 
-    // Parse intake data
+    // Extract intake data
     const m = reply.match(/\|\|\|INTAKE\|\|\|(\{.*?\})\|\|\|END\|\|\|/s);
     if (m) {
       try {
         const p = JSON.parse(m[1]);
         Object.keys(p).forEach(k => {
-          if (p[k] && p[k] !== '...' && String(p[k]).trim() && k !== 'complete') rec[k] = p[k];
+          if (p[k] && p[k] !== '...' && String(p[k]).trim() && k !== 'complete') {
+            rec[k] = p[k];
+          }
         });
         updateRec();
       } catch(e) {}
@@ -113,55 +93,84 @@ async function callAPI(){
     rmTyping();
     addBot(reply);
 
-    const b = document.getElementById('rec-badge');
-    b.classList.add('live'); b.textContent = 'Updated';
-    setTimeout(() => { b.classList.remove('live'); b.textContent = 'Recording'; }, 1800);
+    const badge = document.getElementById('rec-badge');
+    badge.classList.add('live');
+    badge.textContent = 'Updated';
+    setTimeout(() => {
+      badge.classList.remove('live');
+      badge.textContent = 'Recording';
+    }, 1800);
 
   } catch(e) {
     rmTyping();
-    addBot('Connection issue — please try again later.');
-    console.error(e);
+    addBot("Connection issue — please try again later.");
+    console.error("Chat error:", e);
   }
 
   typing = false;
   document.getElementById('sb').disabled = false;
 }
 
-function updateRec(){ /* your existing updateRec() function — unchanged */ }
+function updateRec(){
+  const map = {name:'rf-name',org:'rf-org',contact:'rf-contact',juris:'rf-juris',lang:'rf-lang',
+               area:'rf-area',sum:'rf-sum',dates:'rf-dates',parties:'rf-parties'};
+  Object.entries(map).forEach(([k, id]) => {
+    const el = document.getElementById(id);
+    if (el && rec[k] && rec[k] !== '...') {
+      el.textContent = rec[k];
+      el.classList.remove('empty');
+      el.classList.add('flash');
+      setTimeout(() => el.classList.remove('flash'), 700);
+    }
+  });
+
+  const urgEl = document.getElementById('rf-urg');
+  if (urgEl) {
+    if (rec.urg === 'high') urgEl.innerHTML = '<span class="urg-h">High — priority follow-up</span>';
+    else if (rec.urg === 'normal') urgEl.innerHTML = '<span class="urg-n">Normal</span>';
+    else urgEl.innerHTML = '<span class="urg-u">Not assessed</span>';
+  }
+}
 
 async function genMemo(){
   const btn = document.getElementById('memo-btn');
   if(!msgs.length){ alert('Please have a conversation first.'); return; }
 
-  btn.disabled = true; btn.textContent = 'Generating memorandum…';
+  btn.disabled = true;
+  btn.textContent = 'Generating memorandum…';
 
   try {
     const r = await fetch(`${BACKEND_URL}/generate-doc`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        transcript: transcript.join('\n'),
-        intake: rec
-      })
+      body: JSON.stringify({ transcript: transcript.join('\n'), intake: rec })
     });
 
     const d = await r.json();
-    document.getElementById('memo-out').textContent = d.document || d.error || 'Could not generate.';
+    document.getElementById('memo-out').textContent = d.document || d.error || 'Generation failed.';
     document.getElementById('memo-area').style.display = 'block';
     btn.textContent = 'Memorandum generated';
     btn.classList.add('done');
   } catch(e) {
     btn.disabled = false;
     btn.textContent = 'Generate intake memorandum';
-    alert('Failed to generate memo — please try again.');
+    alert('Failed to generate memo. Please try again.');
+    console.error(e);
   }
 }
 
-function cpMemo(){ /* your existing copy function */ }
+function cpMemo(){
+  const text = document.getElementById('memo-out').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    const original = btn.textContent;
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = original, 2000);
+  });
+}
 
-// Keep your existing hk() and ar() functions
+function hk(e){ if(e.key === 'Enter' && !e.shiftKey){ e.preventDefault(); send(); } }
+function ar(el){ el.style.height = 'auto'; el.style.height = Math.min(el.scrollHeight, 80) + 'px'; }
 
 init();
 </script>
-</body>
-</html>
