@@ -165,7 +165,14 @@ def send_intake_email():
         team       = route_team(area)
         subject    = f"{'[URGENT] ' if urg=='high' else ''}New Intake — {name} · {area} · {ref}"
 
-        if EMAIL_SENDER and EMAIL_PASSWORD and EMAIL_RECIPIENT:
+        # Strip spaces from password in case it was copied with spaces from Google
+        password_clean = EMAIL_PASSWORD.replace(" ", "") if EMAIL_PASSWORD else ""
+
+        print(f"[EMAIL] Attempting to send to: {EMAIL_RECIPIENT}")
+        print(f"[EMAIL] From: {EMAIL_SENDER}")
+        print(f"[EMAIL] Password length: {len(password_clean)} chars")
+
+        if EMAIL_SENDER and password_clean and EMAIL_RECIPIENT:
             msg            = MIMEMultipart("alternative")
             msg["Subject"] = subject
             msg["From"]    = f"Mahassni Intake <{EMAIL_SENDER}>"
@@ -173,14 +180,30 @@ def send_intake_email():
             if urg == "high":
                 msg["X-Priority"] = "1"
             msg.attach(MIMEText(build_email(intake, transcript, ref, date_str), "html"))
-            with smtplib.SMTP_SSL("smtp.gmail.com", 465) as srv:
-                srv.login(EMAIL_SENDER, EMAIL_PASSWORD)
-                srv.sendmail(EMAIL_SENDER, EMAIL_RECIPIENT, msg.as_string())
-            return jsonify({"sent": True, "ref": ref, "team": team})
+            try:
+                with smtplib.SMTP_SSL("smtp.gmail.com", 465) as srv:
+                    srv.login(EMAIL_SENDER, password_clean)
+                    srv.sendmail(EMAIL_SENDER, EMAIL_RECIPIENT, msg.as_string())
+                print(f"[EMAIL] Sent successfully. Ref: {ref}")
+                return jsonify({"sent": True, "ref": ref, "team": team})
+            except smtplib.SMTPAuthenticationError as e:
+                print(f"[EMAIL ERROR] Authentication failed: {e}")
+                return jsonify({"sent": False, "error": f"Gmail authentication failed: {str(e)}", "ref": ref}), 500
+            except smtplib.SMTPException as e:
+                print(f"[EMAIL ERROR] SMTP error: {e}")
+                return jsonify({"sent": False, "error": f"SMTP error: {str(e)}", "ref": ref}), 500
         else:
+            missing = []
+            if not EMAIL_SENDER: missing.append("EMAIL_SENDER")
+            if not password_clean: missing.append("EMAIL_PASSWORD")
+            if not EMAIL_RECIPIENT: missing.append("EMAIL_RECIPIENT")
+            print(f"[EMAIL] Missing config: {missing}")
             return jsonify({"sent": False, "ref": ref, "team": team,
-                            "reason": "Email not configured on server"})
+                            "reason": f"Missing environment variables: {missing}"})
     except Exception as e:
+        print(f"[EMAIL ERROR] Unexpected error: {e}")
+        import traceback
+        traceback.print_exc()
         return jsonify({"error": str(e)}), 500
 
 
