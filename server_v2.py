@@ -9,7 +9,13 @@ from email.mime.text import MIMEText
 app = Flask(__name__)
 CORS(app)
 
-
+# ── SET THESE AS ENVIRONMENT VARIABLES ON RENDER.COM ────────────────────
+# ANTHROPIC_API_KEY   your Anthropic key
+# EMAIL_SENDER        Gmail you send FROM  e.g. mahassni.intake@gmail.com
+# EMAIL_PASSWORD      Gmail App Password (16 chars — NOT your Gmail login)
+# EMAIL_RECIPIENT     Firm receives alerts  e.g. intake@mahassni.com.sa
+# CALENDLY_URL        e.g. https://calendly.com/mahassni/consultation
+# ────────────────────────────────────────────────────────────────────────
 
 client          = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
 EMAIL_SENDER    = os.environ.get("EMAIL_SENDER", "")
@@ -122,10 +128,12 @@ def chat():
     try:
         data     = request.json
         messages = data.get("messages", [])
+        # Allow universal demo to override system prompt per business type
+        system   = data.get("system_override", SYSTEM_PROMPT)
         response = client.messages.create(
-            model="claude-sonnet-4-6",
+            model="claude-sonnet-4-20250514",
             max_tokens=1000,
-            system=SYSTEM_PROMPT,
+            system=system,
             messages=messages
         )
         return jsonify({"reply": response.content[0].text})
@@ -169,24 +177,28 @@ def send_intake_email():
 @app.route("/generate-doc", methods=["POST"])
 def generate_doc():
     try:
-        data       = request.json
-        transcript = data.get("transcript", "")
-        intake     = data.get("intake", {})
-        ref        = f"HM-{datetime.now().year}-{random.randint(100,999)}"
-        date_str   = datetime.now().strftime("%d %B %Y")
-        response   = client.messages.create(
+        data        = request.json
+        transcript  = data.get("transcript", "")
+        intake      = data.get("intake", {})
+        biz_name    = data.get("business_name", "The International Law Firm of Hassan Mahassni")
+        memo_type   = data.get("memo_type", "Legal Intake Memorandum")
+        ref         = f"REF-{datetime.now().year}-{random.randint(100,999)}"
+        date_str    = datetime.now().strftime("%d %B %Y")
+        response    = client.messages.create(
             model="claude-sonnet-4-20250514",
             max_tokens=1200,
-            messages=[{"role":"user","content":f"""Generate a formal legal intake memorandum for The International Law Firm of Hassan Mahassni.
-Include: 1. MATTER REFERENCE: {ref}  2. DATE: {date_str}  3. CLIENT PROFILE  4. MATTER SUMMARY (3-5 sentences)
-5. PRACTICE AREA & RECOMMENDED TEAM  6. URGENCY ASSESSMENT  7. KEY FACTS  8. PARTIES INVOLVED
+            messages=[{"role":"user","content":f"""Generate a formal {memo_type} for {biz_name}.
+Include: 1. REFERENCE: {ref}  2. DATE: {date_str}  3. CLIENT PROFILE  4. MATTER SUMMARY (3-5 sentences)
+5. CATEGORY & RECOMMENDED TEAM  6. URGENCY ASSESSMENT  7. KEY FACTS  8. PARTIES/NOTES
 9. RELEVANT DEADLINES  10. RECOMMENDED NEXT STEPS  11. CLIENT PROFILE NOTES
-Write in English. Professional legal memo format. Clear headers.
+Write in English. Professional format. Clear headers.
 TRANSCRIPT:\n{transcript}\nEXTRACTED DATA:\n{str(intake)}"""}]
         )
         return jsonify({"document": response.content[0].text})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+
 
 
 @app.route("/health", methods=["GET"])
