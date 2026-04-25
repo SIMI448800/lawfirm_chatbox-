@@ -141,7 +141,7 @@ def chat():
         # Allow universal demo to override system prompt per business type
         system   = data.get("system_override", SYSTEM_PROMPT)
         response = client.messages.create(
-            model="claude-sonnet-4-20250514",
+            model="claude-sonnet-4-6",
             max_tokens=1000,
             system=system,
             messages=messages
@@ -195,7 +195,7 @@ def generate_doc():
         ref         = f"REF-{datetime.now().year}-{random.randint(100,999)}"
         date_str    = datetime.now().strftime("%d %B %Y")
         response    = client.messages.create(
-            model="claude-sonnet-4-20250514",
+            model="claude-sonnet-4-6",
             max_tokens=1200,
             messages=[{"role":"user","content":f"""Generate a formal {memo_type} for {biz_name}.
 Include: 1. REFERENCE: {ref}  2. DATE: {date_str}  3. CLIENT PROFILE  4. MATTER SUMMARY (3-5 sentences)
