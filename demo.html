@@ -193,12 +193,16 @@
 <div class="demo-bar">
   <div class="demo-bar-left">
     <div class="live-dot"></div>
-    <div class="demo-bar-text"><strong>Try it now</strong> — type a legal enquiry or click a suggestion below</div>
+    <div class="demo-bar-text" id="demo-bar-txt"><strong>Try it now</strong> — type a legal enquiry or click a suggestion below</div>
   </div>
-  <div class="demo-hints">
+  <div style="display:flex;align-items:center;gap:8px">
+    <span style="font-size:11px;color:rgba(255,255,255,.4);letter-spacing:.06em;text-transform:uppercase">Language:</span>
+    <button onclick="setLang('en')" id="btn-en" style="padding:5px 14px;background:var(--gold);color:var(--navy);border:none;border-radius:4px;font-size:12px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s">EN</button>
+    <button onclick="setLang('ar')" id="btn-ar" style="padding:5px 14px;background:transparent;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.6);border-radius:4px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s">AR عربي</button>
+  </div>
+  <div class="demo-hints" id="hint-chips">
     <div class="hint-chip" onclick="inject('I need help with a corporate acquisition in Saudi Arabia')">Corporate acquisition</div>
     <div class="hint-chip" onclick="inject('We have a dispute going to arbitration next month')">Urgent arbitration</div>
-    <div class="hint-chip" onclick="inject('أحتاج مساعدة في نزاع تجاري')">Arabic enquiry</div>
     <div class="hint-chip" onclick="inject('I need advice on a real estate transaction in Jeddah')">Real estate</div>
     <div class="hint-chip" onclick="inject('J\'ai besoin d\'aide avec un contrat commercial')">French enquiry</div>
   </div>
@@ -212,14 +216,14 @@
     <div class="chat-header">
       <div class="chat-av">M</div>
       <div>
-        <div class="chat-hdr-name">Hassan Mahassni — Legal Assistant</div>
+        <div class="chat-hdr-name" id="chat-hdr-name">Hassan Mahassni — Legal Assistant</div>
         <div class="chat-hdr-sub"><span class="online-dot"></span>Online · intake in progress</div>
       </div>
     </div>
     <div class="chat-body" id="chat-body"></div>
     <div class="chat-footer">
       <div class="input-row">
-        <textarea id="ti" rows="1" placeholder="Type your legal enquiry…" onkeydown="hk(event)" oninput="ar(this)"></textarea>
+        <textarea id="ti" rows="1" placeholder="Type your legal enquiry…" id="chat-inp" onkeydown="hk(event)" oninput="ar(this)"></textarea>
         <button class="send-btn" id="sb" onclick="send()">
           <svg width="13" height="13" fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24">
             <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
@@ -238,27 +242,27 @@
     </div>
     <div class="rec-body">
       <div class="rec-section">
-        <div class="rec-section-title">Client information</div>
-        <div class="rec-field"><span class="rec-label">Full name</span><span class="rec-value empty" id="rf-name">—</span></div>
-        <div class="rec-field"><span class="rec-label">Organisation</span><span class="rec-value empty" id="rf-org">—</span></div>
-        <div class="rec-field"><span class="rec-label">Contact</span><span class="rec-value empty" id="rf-contact">—</span></div>
-        <div class="rec-field"><span class="rec-label">Jurisdiction</span><span class="rec-value empty" id="rf-juris">—</span></div>
-        <div class="rec-field"><span class="rec-label">Language</span><span class="rec-value empty" id="rf-lang">—</span></div>
+        <div class="rec-section-title" id="rec-title-client">Client information</div>
+        <div class="rec-field"><span class="rec-label" id="lbl-name">Full name</span><span class="rec-value empty" id="rf-name">—</span></div>
+        <div class="rec-field"><span class="rec-label" id="lbl-org">Organisation</span><span class="rec-value empty" id="rf-org">—</span></div>
+        <div class="rec-field"><span class="rec-label" id="lbl-contact">Contact</span><span class="rec-value empty" id="rf-contact">—</span></div>
+        <div class="rec-field"><span class="rec-label" id="lbl-juris">Jurisdiction</span><span class="rec-value empty" id="rf-juris">—</span></div>
+        <div class="rec-field"><span class="rec-label" id="lbl-lang">Language</span><span class="rec-value empty" id="rf-lang">—</span></div>
       </div>
       <div class="rec-section">
-        <div class="rec-section-title">Legal matter</div>
-        <div class="rec-field"><span class="rec-label">Practice area</span><span class="rec-value empty" id="rf-area">—</span></div>
-        <div class="rec-field"><span class="rec-label">Summary</span><span class="rec-value empty" id="rf-sum">—</span></div>
-        <div class="rec-field"><span class="rec-label">Urgency</span><span class="rec-value" id="rf-urg"><span class="urg-u">Not assessed</span></span></div>
-        <div class="rec-field"><span class="rec-label">Key dates</span><span class="rec-value empty" id="rf-dates">—</span></div>
-        <div class="rec-field"><span class="rec-label">Parties</span><span class="rec-value empty" id="rf-parties">—</span></div>
+        <div class="rec-section-title" id="rec-title-matter">Legal matter</div>
+        <div class="rec-field"><span class="rec-label" id="lbl-area">Practice area</span><span class="rec-value empty" id="rf-area">—</span></div>
+        <div class="rec-field"><span class="rec-label" id="lbl-sum">Summary</span><span class="rec-value empty" id="rf-sum">—</span></div>
+        <div class="rec-field"><span class="rec-label" id="lbl-urg">Urgency</span><span class="rec-value" id="rf-urg"><span class="urg-u">Not assessed</span></span></div>
+        <div class="rec-field"><span class="rec-label" id="lbl-dates">Key dates</span><span class="rec-value empty" id="rf-dates">—</span></div>
+        <div class="rec-field"><span class="rec-label" id="lbl-parties">Parties</span><span class="rec-value empty" id="rf-parties">—</span></div>
       </div>
       <button class="memo-btn" id="memo-btn" onclick="genMemo()">
         <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
           <polyline points="14 2 14 8 20 8"/>
         </svg>
-        Generate intake memorandum
+        <span id="memo-btn-txt">Generate intake memorandum</span>
       </button>
       <div id="memo-area" style="display:none">
         <div class="memo-out" id="memo-out"></div>
@@ -370,10 +374,13 @@ async function callAPI() {
   showTyping();
 
   try {
+    const L = LABELS[currentLang];
+    const payload = { messages: msgs };
+    if(L.sysOverride) payload.system_override = L.sysOverride;
     const r = await fetch(`${BACKEND_URL}/chat`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ messages: msgs })
+      body: JSON.stringify(payload)
     });
 
     const data = await r.json();
@@ -494,6 +501,168 @@ function cpMemo() {
 }
 
 // ── START ───────────────────────────────────────────────────────────────────
+
+// ── LANGUAGE SYSTEM ─────────────────────────────────────────────────────────
+const LABELS = {
+  en: {
+    barText: '<strong>Try it now</strong> — type a legal enquiry or click a suggestion below',
+    hdrName: 'Hassan Mahassni — Legal Assistant',
+    hdrSub:  'Online · intake in progress',
+    recBadge:'Awaiting input',
+    titleClient:'Client information',
+    titleMatter:'Legal matter',
+    name:'Full name', org:'Organisation', contact:'Contact',
+    juris:'Jurisdiction', lang:'Language', area:'Practice area',
+    sum:'Summary', urg:'Urgency', dates:'Key dates', parties:'Parties',
+    notAssessed:'<span class="urg-u">Not assessed</span>',
+    memoBtn:'Generate intake memorandum',
+    inputPlaceholder:'Type your legal enquiry…',
+    footerNote:'No legal advice provided · Confidential demo · IA AI Solutions',
+    chips:[
+      {text:'Corporate acquisition', msg:'I need help with a corporate acquisition in Saudi Arabia'},
+      {text:'Urgent arbitration',    msg:'We have a dispute going to arbitration next month'},
+      {text:'Real estate',           msg:'I need advice on a real estate transaction in Jeddah'},
+      {text:'French enquiry',        msg:"J'ai besoin d'aide avec un contrat commercial"}
+    ],
+    greeting: "Good day. I am the intake assistant for The International Law Firm of Hassan Mahassni.
+
+How may I assist you today?",
+    greetChips:['Corporate & M&A','Dispute Resolution','Banking & Finance','Real Estate'],
+    sysOverride: null
+  },
+  ar: {
+    barText: '<strong>جرّبه الآن</strong> — اكتب استفساراً قانونياً أو اختر من الأمثلة',
+    hdrName: 'محكمة المحسني — المساعد القانوني',
+    hdrSub:  'متصل · جارٍ تسجيل الاستقبال',
+    recBadge:'في انتظار المدخلات',
+    titleClient:'بيانات العميل',
+    titleMatter:'تفاصيل القضية',
+    name:'الاسم الكامل', org:'المنظمة', contact:'وسيلة التواصل',
+    juris:'نطاق الاختصاص', lang:'اللغة', area:'مجال التخصص',
+    sum:'ملخص القضية', urg:'مستوى الإلحاح', dates:'التواريخ المهمة', parties:'الأطراف',
+    notAssessed:'<span class="urg-u">لم يُحدَّد بعد</span>',
+    memoBtn:'إنشاء مذكرة الاستقبال',
+    inputPlaceholder:'اكتب استفساركم القانوني…',
+    footerNote:'لا تُقدَّم استشارات قانونية · عرض توضيحي سري · IA AI Solutions',
+    chips:[
+      {text:'اندماج وشراء شركات',   msg:'أحتاج مساعدة في صفقة استحواذ على شركة في جدة'},
+      {text:'نزاع تجاري',            msg:'لدينا نزاع تجاري يحتاج إلى تحكيم عاجل'},
+      {text:'قضية عقارية',           msg:'أحتاج استشارة بشأن صفقة عقارية في جدة'},
+      {text:'تمويل مصرفي',           msg:'لدينا خلاف مع بنك الراجحي بشأن عقد تمويل'}
+    ],
+    greeting: "السلام عليكم. أنا المساعد القانوني لمكتب المحامي الدولي حسن المحسني.
+
+كيف يمكنني مساعدتكم اليوم؟",
+    greetChips:['اندماج وشراء','تسوية النزاعات','التمويل المصرفي','العقارات'],
+    sysOverride: `أنت مساعد استقبال قانوني لمكتب المحامي الدولي حسن المحسني — أحد أعرق المكاتب القانونية في المملكة العربية السعودية، تأسس عام 1970، حاصل على تصنيفات Chambers & Partners وLegal 500.
+
+مهمتك الوحيدة هي جمع بيانات العميل باحترافية. لا تُقدِّم استشارات قانونية. رُد دائماً باللغة العربية بغض النظر عن لغة العميل ما لم يتحدث بالفرنسية فقط.
+
+اجمع: الاسم الكامل، اسم الجهة، وسيلة التواصل، نطاق الاختصاص، مجال التخصص، ملخص القضية، مستوى الإلحاح، التواريخ المهمة، الأطراف.
+
+التخصصات: التمويل المصرفي / التمويل الإسلامي / تمويل المشاريع / الاندماج والاستحواذ / تسوية النزاعات والتحكيم / مشاريع الطاقة / الأسواق المالية / العقارات والإنشاء / العمالة / الملكية الفكرية / التنظيم والامتثال / الوصايا والتركات.
+
+بعد كل رد أضف:
+|||INTAKE|||{"name":"...","org":"...","contact":"...","juris":"...","lang":"عربي","area":"...","sum":"...","urg":"normal|high|unknown","dates":"...","parties":"...","complete":false}|||END|||
+
+اضبط complete:true عند جمع: الاسم + وسيلة التواصل + التخصص + الملخص.
+
+قواعد أساسية:
+- لا تُقدِّم استشارات قانونية أبداً
+- لا ترفض أي استفسار أو تُحيل العميل لمكتب آخر — دورك الاستقبال فقط
+- نبرة رسمية ومهنية
+- اضبط urg:high للقضايا المستعجلة والمواعيد النهائية القريبة`
+  }
+};
+
+let currentLang = 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  const L = LABELS[lang];
+  const isAr = lang === 'ar';
+
+  // Toggle buttons
+  document.getElementById('btn-en').style.background = isAr ? 'transparent' : 'var(--gold)';
+  document.getElementById('btn-en').style.color      = isAr ? 'rgba(255,255,255,.6)' : 'var(--navy)';
+  document.getElementById('btn-en').style.border     = isAr ? '1px solid rgba(255,255,255,.2)' : 'none';
+  document.getElementById('btn-ar').style.background = isAr ? 'var(--gold)' : 'transparent';
+  document.getElementById('btn-ar').style.color      = isAr ? 'var(--navy)' : 'rgba(255,255,255,.6)';
+  document.getElementById('btn-ar').style.border     = isAr ? 'none' : '1px solid rgba(255,255,255,.2)';
+
+  // Bar text
+  document.getElementById('demo-bar-txt').innerHTML = L.barText;
+
+  // Chat header
+  document.getElementById('chat-hdr-name').textContent = L.hdrName;
+
+  // Input placeholder
+  document.getElementById('chat-inp').placeholder = L.inputPlaceholder;
+
+  // Footer note
+  const fn = document.querySelector('.footer-note');
+  if(fn) fn.textContent = L.footerNote;
+
+  // Memo button text
+  const mbt = document.getElementById('memo-btn-txt');
+  if(mbt) mbt.textContent = L.memoBtn;
+
+  // Record labels
+  document.getElementById('rec-title-client').textContent = L.titleClient;
+  document.getElementById('rec-title-matter').textContent = L.titleMatter;
+  document.getElementById('lbl-name').textContent    = L.name;
+  document.getElementById('lbl-org').textContent     = L.org;
+  document.getElementById('lbl-contact').textContent = L.contact;
+  document.getElementById('lbl-juris').textContent   = L.juris;
+  document.getElementById('lbl-lang').textContent    = L.lang;
+  document.getElementById('lbl-area').textContent    = L.area;
+  document.getElementById('lbl-sum').textContent     = L.sum;
+  document.getElementById('lbl-urg').textContent     = L.urg;
+  document.getElementById('lbl-dates').textContent   = L.dates;
+  document.getElementById('lbl-parties').textContent = L.parties;
+
+  // RTL for record panel when Arabic
+  const recPanel = document.querySelector('.record-panel');
+  if(recPanel) recPanel.style.direction = isAr ? 'rtl' : 'ltr';
+
+  // Urgency badge
+  const urg = document.getElementById('rf-urg');
+  if(urg) urg.innerHTML = L.notAssessed;
+
+  // Hint chips
+  const hintDiv = document.getElementById('hint-chips');
+  if(hintDiv) {
+    hintDiv.innerHTML = L.chips.map(ch =>
+      `<div class="hint-chip" onclick="inject('${ch.msg.replace(/'/g,"\'")}')">${ch.text}</div>`
+    ).join('');
+  }
+
+  // Reset and restart chat with new language
+  resetChat(lang);
+}
+
+function resetChat(lang) {
+  const L = LABELS[lang];
+  msgs = []; transcript = []; intakeComplete = false;
+  rec = {name:'',org:'',contact:'',juris:'',lang:'',area:'',sum:'',urg:'unknown',dates:'',parties:''};
+  document.getElementById('chat-body').innerHTML = '';
+  const memoArea = document.getElementById('memo-area');
+  if(memoArea) memoArea.style.display = 'none';
+  const memoBtn = document.getElementById('memo-btn');
+  if(memoBtn){ memoBtn.disabled=false; memoBtn.classList.remove('done'); }
+  // Reset all record fields
+  ['rf-name','rf-org','rf-contact','rf-juris','rf-lang','rf-area','rf-sum','rf-dates','rf-parties'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el){el.textContent='—';el.className='rec-value empty';}
+  });
+  const badge=document.getElementById('rec-badge');
+  if(badge){badge.textContent=L.recBadge;badge.classList.remove('live');}
+  addBot(L.greeting, L.greetChips);
+}
+
+// Override callAPI to pass system_override when in Arabic
+const _origProcess = process;
+
 init();
 </script>
 </body>
