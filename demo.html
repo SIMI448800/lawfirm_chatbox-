@@ -524,9 +524,7 @@ const LABELS = {
       {text:'Real estate',           msg:'I need advice on a real estate transaction in Jeddah'},
       {text:'French enquiry',        msg:"J'ai besoin d'aide avec un contrat commercial"}
     ],
-    greeting: "Good day. I am the intake assistant for The International Law Firm of Hassan Mahassni.
-
-How may I assist you today?",
+    greeting: 'Good day. I am the intake assistant for The International Law Firm of Hassan Mahassni.\n\nHow may I assist you today?',
     greetChips:['Corporate & M&A','Dispute Resolution','Banking & Finance','Real Estate'],
     sysOverride: null
   },
@@ -540,38 +538,19 @@ How may I assist you today?",
     name:'الاسم الكامل', org:'المنظمة', contact:'وسيلة التواصل',
     juris:'نطاق الاختصاص', lang:'اللغة', area:'مجال التخصص',
     sum:'ملخص القضية', urg:'مستوى الإلحاح', dates:'التواريخ المهمة', parties:'الأطراف',
-    notAssessed:'<span class="urg-u">لم يُحدَّد بعد</span>',
+    notAssessed:'<span class="urg-u">لم يُحدَد بعد</span>',
     memoBtn:'إنشاء مذكرة الاستقبال',
     inputPlaceholder:'اكتب استفساركم القانوني…',
-    footerNote:'لا تُقدَّم استشارات قانونية · عرض توضيحي سري · IA AI Solutions',
+    footerNote:'لا تُقدَّم استشارات قانونية · عرض توضيحي سري · IA AI Solutions',
     chips:[
       {text:'اندماج وشراء شركات',   msg:'أحتاج مساعدة في صفقة استحواذ على شركة في جدة'},
       {text:'نزاع تجاري',            msg:'لدينا نزاع تجاري يحتاج إلى تحكيم عاجل'},
       {text:'قضية عقارية',           msg:'أحتاج استشارة بشأن صفقة عقارية في جدة'},
-      {text:'تمويل مصرفي',           msg:'لدينا خلاف مع بنك الراجحي بشأن عقد تمويل'}
+      {text:'خلاف مصرفي',           msg:'لدينا خلاف مع بنك الراجحي بشأن عقد تمويل'}
     ],
-    greeting: "السلام عليكم. أنا المساعد القانوني لمكتب المحامي الدولي حسن المحسني.
-
-كيف يمكنني مساعدتكم اليوم؟",
+    greeting: 'السلام عليكم. أنا المساعد القانوني لمكتب المحامي الدولي حسن المحسني.\n\nكيف يمكنني مساعدتكم اليوم؟',
     greetChips:['اندماج وشراء','تسوية النزاعات','التمويل المصرفي','العقارات'],
-    sysOverride: `أنت مساعد استقبال قانوني لمكتب المحامي الدولي حسن المحسني — أحد أعرق المكاتب القانونية في المملكة العربية السعودية، تأسس عام 1970، حاصل على تصنيفات Chambers & Partners وLegal 500.
-
-مهمتك الوحيدة هي جمع بيانات العميل باحترافية. لا تُقدِّم استشارات قانونية. رُد دائماً باللغة العربية بغض النظر عن لغة العميل ما لم يتحدث بالفرنسية فقط.
-
-اجمع: الاسم الكامل، اسم الجهة، وسيلة التواصل، نطاق الاختصاص، مجال التخصص، ملخص القضية، مستوى الإلحاح، التواريخ المهمة، الأطراف.
-
-التخصصات: التمويل المصرفي / التمويل الإسلامي / تمويل المشاريع / الاندماج والاستحواذ / تسوية النزاعات والتحكيم / مشاريع الطاقة / الأسواق المالية / العقارات والإنشاء / العمالة / الملكية الفكرية / التنظيم والامتثال / الوصايا والتركات.
-
-بعد كل رد أضف:
-|||INTAKE|||{"name":"...","org":"...","contact":"...","juris":"...","lang":"عربي","area":"...","sum":"...","urg":"normal|high|unknown","dates":"...","parties":"...","complete":false}|||END|||
-
-اضبط complete:true عند جمع: الاسم + وسيلة التواصل + التخصص + الملخص.
-
-قواعد أساسية:
-- لا تُقدِّم استشارات قانونية أبداً
-- لا ترفض أي استفسار أو تُحيل العميل لمكتب آخر — دورك الاستقبال فقط
-- نبرة رسمية ومهنية
-- اضبط urg:high للقضايا المستعجلة والمواعيد النهائية القريبة`
+    sysOverride: `أنت مساعد استقبال قانوني لمكتب المحامي الدولي حسن المحسني — أحد أعرق المكاتب القانونية في المملكة العربية السعودية، تأسس عام 1970، حاصل على تصنيفات Chambers & Partners وLegal 500. مهمتك الوحيدة هي جمع بيانات العميل باحترافية. لا تُقدّم استشارات قانونية. رُد دائماً باللغة العربية. اجمع: الاسم الكامل، اسم الجهة، وسيلة التواصل، نطاق الاختصاص، مجال التخصص، ملخص القضية، درجة الإلحاح، التواريخ، الأطراف. بعد كل رد أضف: |||INTAKE|||{"name":"...","org":"...","contact":"...","juris":"...","lang":"عربي","area":"...","sum":"...","urg":"normal|high|unknown","dates":"...","parties":"...","complete":false}|||END||| اضبط complete:true عند جمع: الاسم + وسيلة التواصل + التخصص + الملخص. لا ترفض أي استفسار أبداً.`
   }
 };
 
@@ -582,34 +561,31 @@ function setLang(lang) {
   const L = LABELS[lang];
   const isAr = lang === 'ar';
 
-  // Toggle buttons
-  document.getElementById('btn-en').style.background = isAr ? 'transparent' : 'var(--gold)';
-  document.getElementById('btn-en').style.color      = isAr ? 'rgba(255,255,255,.6)' : 'var(--navy)';
-  document.getElementById('btn-en').style.border     = isAr ? '1px solid rgba(255,255,255,.2)' : 'none';
-  document.getElementById('btn-ar').style.background = isAr ? 'var(--gold)' : 'transparent';
-  document.getElementById('btn-ar').style.color      = isAr ? 'var(--navy)' : 'rgba(255,255,255,.6)';
-  document.getElementById('btn-ar').style.border     = isAr ? 'none' : '1px solid rgba(255,255,255,.2)';
+  document.getElementById('btn-en').style.cssText = isAr
+    ? 'padding:5px 14px;background:transparent;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.6);border-radius:4px;font-size:12px;cursor:pointer;font-family:"DM Sans",sans-serif'
+    : 'padding:5px 14px;background:var(--gold);color:var(--navy);border:none;border-radius:4px;font-size:12px;font-weight:500;cursor:pointer;font-family:"DM Sans",sans-serif';
+  document.getElementById('btn-ar').style.cssText = isAr
+    ? 'padding:5px 14px;background:var(--gold);color:var(--navy);border:none;border-radius:4px;font-size:12px;font-weight:500;cursor:pointer;font-family:"DM Sans",sans-serif'
+    : 'padding:5px 14px;background:transparent;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.6);border-radius:4px;font-size:12px;cursor:pointer;font-family:"DM Sans",sans-serif';
 
-  // Bar text
-  document.getElementById('demo-bar-txt').innerHTML = L.barText;
+  const barTxt = document.getElementById('demo-bar-txt');
+  if(barTxt) barTxt.innerHTML = L.barText;
 
-  // Chat header
-  document.getElementById('chat-hdr-name').textContent = L.hdrName;
+  const hdrName = document.getElementById('chat-hdr-name');
+  if(hdrName) hdrName.textContent = L.hdrName;
+
   const subTxt = document.getElementById('chat-hdr-sub-txt');
   if(subTxt) subTxt.textContent = L.hdrSub;
 
-  // Input placeholder
-  document.getElementById('chat-inp').placeholder = L.inputPlaceholder;
+  const inp = document.getElementById('chat-inp');
+  if(inp){ inp.placeholder = L.inputPlaceholder; inp.style.direction = isAr ? 'rtl' : 'ltr'; }
 
-  // Footer note
   const fn = document.getElementById('footer-note');
   if(fn) fn.textContent = L.footerNote;
 
-  // Memo button text
   const mbt = document.getElementById('memo-btn-txt');
   if(mbt) mbt.textContent = L.memoBtn;
 
-  // Record labels
   document.getElementById('rec-title-client').textContent = L.titleClient;
   document.getElementById('rec-title-matter').textContent = L.titleMatter;
   document.getElementById('lbl-name').textContent    = L.name;
@@ -623,65 +599,53 @@ function setLang(lang) {
   document.getElementById('lbl-dates').textContent   = L.dates;
   document.getElementById('lbl-parties').textContent = L.parties;
 
-  // RTL for record panel when Arabic
+  const urg = document.getElementById('rf-urg');
+  if(urg) urg.innerHTML = L.notAssessed;
+
   const recPanel = document.querySelector('.record-panel');
-  if(recPanel){
-    recPanel.style.direction = isAr ? 'rtl' : 'ltr';
-    recPanel.style.textAlign = isAr ? 'right' : 'left';
-  }
-  // Also flip the rec-field label/value layout for RTL
+  if(recPanel){ recPanel.style.direction = isAr ? 'rtl' : 'ltr'; }
+
   document.querySelectorAll('.rec-field').forEach(field => {
     field.style.flexDirection = isAr ? 'row-reverse' : 'row';
   });
 
-  // Urgency badge
-  const urg = document.getElementById('rf-urg');
-  if(urg) urg.innerHTML = L.notAssessed;
-
-  // Hint chips
-  const hintDiv = document.getElementById('hint-chips');
-  if(hintDiv) {
-    hintDiv.innerHTML = L.chips.map(ch =>
-      `<div class="hint-chip" onclick="inject('${ch.msg.replace(/'/g,"\'")}')">${ch.text}</div>`
-    ).join('');
-  }
-  // Chat body direction
   const chatBody = document.getElementById('chat-body');
   if(chatBody) chatBody.style.direction = isAr ? 'rtl' : 'ltr';
-  // Input direction
-  const inp = document.getElementById('chat-inp');
-  if(inp) inp.style.direction = isAr ? 'rtl' : 'ltr';
 
-  // Reset and restart chat with new language
+  const hintDiv = document.getElementById('hint-chips');
+  if(hintDiv) {
+    hintDiv.innerHTML = L.chips.map(function(ch){
+      return '<div class="hint-chip" onclick="inject(\u0027' + ch.msg + '\u0027)">' + ch.text + '</div>';
+    }).join('');;
+  }
+
   resetChat(lang);
 }
 
 function resetChat(lang) {
   const L = LABELS[lang];
+  const isAr = lang === 'ar';
   msgs = []; transcript = []; intakeComplete = false;
   rec = {name:'',org:'',contact:'',juris:'',lang:'',area:'',sum:'',urg:'unknown',dates:'',parties:''};
   document.getElementById('chat-body').innerHTML = '';
+  document.getElementById('chat-body').style.direction = isAr ? 'rtl' : 'ltr';
   const memoArea = document.getElementById('memo-area');
   if(memoArea) memoArea.style.display = 'none';
   const memoBtn = document.getElementById('memo-btn');
   if(memoBtn){ memoBtn.disabled=false; memoBtn.classList.remove('done'); }
-  // Reset all record fields
+  const mbtxt = document.getElementById('memo-btn-txt');
+  if(mbtxt) mbtxt.textContent = L.memoBtn;
   ['rf-name','rf-org','rf-contact','rf-juris','rf-lang','rf-area','rf-sum','rf-dates','rf-parties'].forEach(id=>{
     const el=document.getElementById(id);
     if(el){el.textContent='—';el.className='rec-value empty';}
   });
   document.querySelectorAll('.rec-field').forEach(field => {
-    field.style.flexDirection = (lang==='ar') ? 'row-reverse' : 'row';
+    field.style.flexDirection = isAr ? 'row-reverse' : 'row';
   });
-  const recPanel = document.querySelector('.record-panel');
-  if(recPanel){ recPanel.style.direction=(lang==='ar')?'rtl':'ltr'; recPanel.style.textAlign=(lang==='ar')?'right':'left'; }
   const badge=document.getElementById('rec-badge');
   if(badge){badge.textContent=L.recBadge;badge.classList.remove('live');}
   addBot(L.greeting, L.greetChips);
 }
-
-// Override callAPI to pass system_override when in Arabic
-const _origProcess = process;
 
 init();
 </script>
