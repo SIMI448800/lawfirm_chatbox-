@@ -217,7 +217,7 @@
       <div class="chat-av">M</div>
       <div>
         <div class="chat-hdr-name" id="chat-hdr-name">Hassan Mahassni — Legal Assistant</div>
-        <div class="chat-hdr-sub"><span class="online-dot"></span>Online · intake in progress</div>
+        <div class="chat-hdr-sub" id="chat-hdr-sub"><span class="online-dot"></span><span id="chat-hdr-sub-txt">Online · intake in progress</span></div>
       </div>
     </div>
     <div class="chat-body" id="chat-body"></div>
@@ -230,7 +230,7 @@
           </svg>
         </button>
       </div>
-      <div class="footer-note">No legal advice provided · Confidential demo · IA AI Solutions</div>
+      <div class="footer-note" id="footer-note">No legal advice provided · Confidential demo · IA AI Solutions</div>
     </div>
   </div>
 
@@ -595,12 +595,14 @@ function setLang(lang) {
 
   // Chat header
   document.getElementById('chat-hdr-name').textContent = L.hdrName;
+  const subTxt = document.getElementById('chat-hdr-sub-txt');
+  if(subTxt) subTxt.textContent = L.hdrSub;
 
   // Input placeholder
   document.getElementById('chat-inp').placeholder = L.inputPlaceholder;
 
   // Footer note
-  const fn = document.querySelector('.footer-note');
+  const fn = document.getElementById('footer-note');
   if(fn) fn.textContent = L.footerNote;
 
   // Memo button text
@@ -623,7 +625,14 @@ function setLang(lang) {
 
   // RTL for record panel when Arabic
   const recPanel = document.querySelector('.record-panel');
-  if(recPanel) recPanel.style.direction = isAr ? 'rtl' : 'ltr';
+  if(recPanel){
+    recPanel.style.direction = isAr ? 'rtl' : 'ltr';
+    recPanel.style.textAlign = isAr ? 'right' : 'left';
+  }
+  // Also flip the rec-field label/value layout for RTL
+  document.querySelectorAll('.rec-field').forEach(field => {
+    field.style.flexDirection = isAr ? 'row-reverse' : 'row';
+  });
 
   // Urgency badge
   const urg = document.getElementById('rf-urg');
@@ -636,6 +645,12 @@ function setLang(lang) {
       `<div class="hint-chip" onclick="inject('${ch.msg.replace(/'/g,"\'")}')">${ch.text}</div>`
     ).join('');
   }
+  // Chat body direction
+  const chatBody = document.getElementById('chat-body');
+  if(chatBody) chatBody.style.direction = isAr ? 'rtl' : 'ltr';
+  // Input direction
+  const inp = document.getElementById('chat-inp');
+  if(inp) inp.style.direction = isAr ? 'rtl' : 'ltr';
 
   // Reset and restart chat with new language
   resetChat(lang);
@@ -655,6 +670,11 @@ function resetChat(lang) {
     const el=document.getElementById(id);
     if(el){el.textContent='—';el.className='rec-value empty';}
   });
+  document.querySelectorAll('.rec-field').forEach(field => {
+    field.style.flexDirection = (lang==='ar') ? 'row-reverse' : 'row';
+  });
+  const recPanel = document.querySelector('.record-panel');
+  if(recPanel){ recPanel.style.direction=(lang==='ar')?'rtl':'ltr'; recPanel.style.textAlign=(lang==='ar')?'right':'left'; }
   const badge=document.getElementById('rec-badge');
   if(badge){badge.textContent=L.recBadge;badge.classList.remove('live');}
   addBot(L.greeting, L.greetChips);
