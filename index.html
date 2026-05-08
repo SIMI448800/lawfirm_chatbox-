@@ -3,301 +3,330 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="IA AI Solutions — أنظمة ذكاء اصطناعي للأعمال السعودية. استقبال العملاء على مدار الساعة بالعربية والإنجليزية. جاهز خلال 7 أيام.">
+<meta name="description" content="IA AI Solutions — أنظمة ذكاء اصطناعي للأعمال السعودية. استقبال العملاء على مدار الساعة بالعربية والإنجليزية.">
 <title>IA AI Solutions — أنظمة ذكاء اصطناعي للأعمال السعودية</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Noto+Kufi+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --black:#080808;--b1:#111;--b2:#181818;--b3:#202020;
-  --gold:#b8922a;--gold2:#d4a830;--white:#fff;--muted:#888;--green:#2dd4a0;
-  --font-ar:"Noto Kufi Arabic",sans-serif;
-  --font-en:"DM Sans",sans-serif;
-  --font-display:"Cormorant Garamond",serif;
+  --black:#080808;--b1:#111;--b2:#181818;--b3:#222;
+  --gold:#b8922a;--gold2:#d4a830;--gold3:#f0d060;
+  --white:#fff;--muted:#777;--green:#2dd4a0;
+  --ar:"Noto Kufi Arabic",sans-serif;
+  --en:"DM Sans",sans-serif;
+  --display:"Cormorant Garamond",serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:var(--font-ar);background:var(--black);color:var(--white);overflow-x:hidden;line-height:1.7}
-[lang="en"] body,[dir="ltr"] body{font-family:var(--font-en)}
+body{font-family:var(--ar);background:var(--black);color:var(--white);overflow-x:hidden;line-height:1.7}
+[dir="ltr"] body{font-family:var(--en)}
 ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:var(--gold)}
 
 /* ── NAV ── */
-nav{position:fixed;top:0;right:0;left:0;z-index:999;padding:0 6%;height:68px;display:flex;align-items:center;justify-content:space-between;transition:all .4s}
-nav.scrolled{background:rgba(8,8,8,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(184,146,42,.15)}
-.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
-.logo-mark{width:36px;height:36px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:17px;font-weight:600;color:var(--black);flex-shrink:0}
-.logo-text{font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--white)}
-.logo-text span{color:var(--gold)}
-.nav-links{display:flex;align-items:center;gap:28px}
-.nl{color:rgba(255,255,255,.5);text-decoration:none;font-size:13px;transition:color .2s;font-family:var(--font-ar);white-space:nowrap}
-[dir="ltr"] .nl{font-family:var(--font-en)}
+nav{position:fixed;top:0;right:0;left:0;z-index:999;padding:0 5%;height:64px;display:flex;align-items:center;justify-content:space-between;background:rgba(8,8,8,.96);backdrop-filter:blur(20px);border-bottom:1px solid rgba(184,146,42,.15)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.lm{width:34px;height:34px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:16px;font-weight:600;color:var(--black)}
+.lt{font-family:var(--display);font-size:17px;font-weight:600;color:var(--white)}
+.lt span{color:var(--gold)}
+.nav-r{display:flex;align-items:center;gap:20px}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nl{color:rgba(255,255,255,.5);text-decoration:none;font-size:13px;transition:color .2s;white-space:nowrap}
 .nl:hover{color:var(--gold)}
-.nav-cta{border:1px solid var(--gold);color:var(--gold);padding:8px 20px;font-size:13px;text-decoration:none;transition:all .2s;white-space:nowrap}
+.nav-cta{border:1px solid var(--gold);color:var(--gold);padding:7px 18px;font-size:13px;text-decoration:none;transition:all .2s;white-space:nowrap}
 .nav-cta:hover{background:var(--gold);color:var(--black)}
-
-/* Language toggle */
-.lang-toggle{display:flex;align-items:center;gap:0;border:1px solid rgba(184,146,42,.3);overflow:hidden;flex-shrink:0}
-.lt-btn{padding:6px 12px;font-size:11px;font-weight:500;cursor:pointer;border:none;background:transparent;transition:all .2s;letter-spacing:.06em;color:rgba(255,255,255,.4);font-family:var(--font-en)}
-.lt-btn.active{background:var(--gold);color:var(--black)}
-.lt-btn:not(.active):hover{color:var(--white)}
-
-.mob-tog{display:none;flex-direction:column;gap:5px;cursor:pointer;margin-inline-start:12px}
+.lang-toggle{display:flex;border:1px solid rgba(184,146,42,.3);overflow:hidden}
+.lb{padding:5px 10px;font-size:11px;font-weight:600;cursor:pointer;border:none;background:transparent;color:rgba(255,255,255,.4);font-family:var(--en);transition:all .2s}
+.lb.active{background:var(--gold);color:var(--black)}
+.mob-tog{display:none;flex-direction:column;gap:5px;cursor:pointer}
 .mob-tog span{width:22px;height:1px;background:var(--white)}
 
 /* ── HERO ── */
-.hero{min-height:100vh;position:relative;display:flex;align-items:center;padding:0 6%;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 90% 70% at 35% 50%,rgba(184,146,42,.07) 0%,transparent 55%),radial-gradient(ellipse 60% 80% at 5% 90%,rgba(45,212,160,.04) 0%,transparent 50%),linear-gradient(150deg,#0a0a0a 0%,#0e0c08 50%,#080b0a 100%)}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(184,146,42,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(184,146,42,.05) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 75% 75% at 45% 50%,black,transparent)}
-.hero-glow{position:absolute;left:-60px;top:50%;transform:translateY(-50%);width:640px;height:640px;background:radial-gradient(circle,rgba(184,146,42,.07) 0%,transparent 65%);pointer-events:none}
-[dir="ltr"] .hero-glow{left:auto;right:-60px}
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;padding:80px 5% 60px;overflow:hidden}
 
-.hero-content{position:relative;z-index:2;max-width:620px}
-.eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:30px}
-.e-line{width:36px;height:1px;background:var(--gold);flex-shrink:0;order:1}
-.e-tag{font-size:10.5px;text-transform:uppercase;letter-spacing:.14em;color:var(--gold);order:2;font-family:var(--font-en)}
-[dir="rtl"] .e-tag{letter-spacing:.04em;font-family:var(--font-ar)}
-h1{font-family:var(--font-display);font-size:clamp(46px,5.5vw,80px);font-weight:500;line-height:1.06;letter-spacing:-.01em;margin-bottom:22px}
-[dir="rtl"] h1{font-family:var(--font-ar);font-weight:600;line-height:1.2;font-size:clamp(38px,4.5vw,66px)}
+/* Smart city atmosphere — pure CSS, no external images */
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 50%, rgba(184,146,42,.12) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 80% at 90% 20%, rgba(184,146,42,.06) 0%, transparent 40%),
+    radial-gradient(ellipse 60% 60% at 80% 80%, rgba(45,212,160,.04) 0%, transparent 40%),
+    linear-gradient(165deg, #0c0a06 0%, #080808 40%, #06080a 100%);
+}
+/* Grid overlay */
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(184,146,42,.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(184,146,42,.07) 1px, transparent 1px);
+  background-size:52px 52px;
+  mask-image:radial-gradient(ellipse 70% 80% at 25% 50%, black 20%, transparent 80%);
+}
+[dir="ltr"] .hero-grid{mask-image:radial-gradient(ellipse 70% 80% at 75% 50%, black 20%, transparent 80%)}
+
+/* City silhouette built with CSS */
+.hero-city{position:absolute;bottom:0;left:0;right:0;height:180px;opacity:.06}
+.hero-city::before{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:100%;
+  background:repeating-linear-gradient(
+    90deg,
+    var(--gold) 0px, var(--gold) 2px,
+    transparent 2px, transparent 18px,
+    var(--gold) 18px, var(--gold) 20px,
+    transparent 20px, transparent 28px,
+    var(--gold) 28px, var(--gold) 30px,
+    transparent 30px, transparent 44px,
+    var(--gold) 44px, var(--gold) 46px,
+    transparent 46px, transparent 56px
+  );
+  clip-path:polygon(
+    0% 100%, 0% 60%, 3% 60%, 3% 30%, 5% 30%, 5% 60%, 8% 60%, 8% 20%, 10% 20%, 10% 60%,
+    13% 60%, 13% 40%, 15% 40%, 15% 10%, 17% 10%, 17% 40%, 19% 40%, 19% 60%,
+    22% 60%, 22% 25%, 24% 25%, 24% 60%, 27% 60%, 27% 45%, 29% 45%, 29% 15%, 31% 15%, 31% 45%, 33% 45%, 33% 60%,
+    36% 60%, 36% 35%, 38% 35%, 38% 60%, 40% 60%, 40% 50%, 42% 50%, 42% 20%, 44% 20%, 44% 50%, 46% 50%, 46% 60%,
+    49% 60%, 49% 30%, 51% 30%, 51% 60%, 54% 60%, 54% 42%, 56% 42%, 56% 12%, 58% 12%, 58% 42%, 60% 42%, 60% 60%,
+    63% 60%, 63% 48%, 65% 48%, 65% 60%, 68% 60%, 68% 28%, 70% 28%, 70% 60%,
+    73% 60%, 73% 38%, 75% 38%, 75% 60%, 77% 60%, 77% 50%, 79% 50%, 79% 18%, 81% 18%, 81% 50%, 83% 50%, 83% 60%,
+    86% 60%, 86% 32%, 88% 32%, 88% 60%, 91% 60%, 91% 44%, 93% 44%, 93% 60%,
+    96% 60%, 96% 55%, 98% 55%, 98% 60%, 100% 60%, 100% 100%
+  );
+}
+
+.hero-content{position:relative;z-index:2;max-width:600px}
+[dir="ltr"] .hero-content{margin-right:auto}
+.eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:28px}
+.e-line{width:32px;height:1px;background:var(--gold);flex-shrink:0}
+.e-tag{font-size:10px;text-transform:uppercase;letter-spacing:.15em;color:var(--gold);font-family:var(--en)}
+[dir="rtl"] .e-tag{letter-spacing:.04em;font-family:var(--ar);font-size:12px}
+h1{font-family:var(--display);font-size:clamp(44px,5.5vw,78px);font-weight:500;line-height:1.05;margin-bottom:20px}
+[dir="rtl"] h1{font-family:var(--ar);font-weight:700;font-size:clamp(36px,4.2vw,62px);line-height:1.22}
 h1 em{color:var(--gold);font-style:italic;display:block}
 [dir="rtl"] h1 em{font-style:normal}
-.hero-p{font-size:15px;color:rgba(255,255,255,.48);line-height:1.88;max-width:460px;margin-bottom:40px;font-weight:300}
-[dir="rtl"] .hero-p{font-size:14.5px;line-height:2}
-.hero-p strong{color:rgba(255,255,255,.8);font-weight:500}
-.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:52px}
-.btn-gold{background:var(--gold);color:var(--black);padding:14px 28px;font-size:13.5px;font-weight:500;text-decoration:none;transition:all .25s;display:inline-flex;align-items:center;gap:8px}
-.btn-gold:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 14px 36px rgba(184,146,42,.22)}
-.btn-ghost{border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.65);padding:14px 28px;font-size:13.5px;text-decoration:none;transition:all .2s}
+.hero-p{font-size:15px;color:rgba(255,255,255,.5);line-height:1.9;max-width:440px;margin-bottom:36px;font-weight:300}
+[dir="rtl"] .hero-p{font-size:14px;line-height:2}
+.hero-p strong{color:rgba(255,255,255,.82);font-weight:500}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px}
+.btn-gold{background:var(--gold);color:var(--black);padding:13px 26px;font-size:13.5px;font-weight:600;text-decoration:none;transition:all .25s;display:inline-flex;align-items:center;gap:8px;letter-spacing:.02em}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 12px 32px rgba(184,146,42,.25)}
+.btn-ghost{border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.65);padding:13px 26px;font-size:13.5px;text-decoration:none;transition:all .2s}
 .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
-.hero-stats{display:flex;gap:32px;flex-wrap:wrap}
-.hstat-n{font-family:var(--font-display);font-size:32px;font-weight:500;color:var(--gold);line-height:1}
-.hstat-l{font-size:10.5px;color:rgba(255,255,255,.32);margin-top:5px;letter-spacing:.06em;text-transform:uppercase}
+.hero-stats{display:flex;gap:0;flex-wrap:wrap}
+.hstat{padding-inline-end:28px;margin-inline-end:28px;border-inline-end:1px solid rgba(255,255,255,.08)}
+.hstat:last-child{border:none;padding:0;margin:0}
+.hstat-n{font-family:var(--display);font-size:30px;font-weight:500;color:var(--gold);line-height:1}
+.hstat-l{font-size:10.5px;color:rgba(255,255,255,.3);margin-top:5px;letter-spacing:.05em;text-transform:uppercase}
 [dir="rtl"] .hstat-l{font-size:11px;letter-spacing:0}
-.h-divider{width:1px;background:rgba(255,255,255,.07);align-self:stretch;margin:3px 0}
 
-/* Hero floating card */
-.hero-card{position:absolute;left:6%;top:50%;transform:translateY(-50%);width:360px;max-width:36%}
-[dir="ltr"] .hero-card{left:auto;right:6%}
-.hc{background:rgba(14,12,8,.92);border:1px solid rgba(184,146,42,.18);backdrop-filter:blur(24px);overflow:hidden}
-.hc::before{content:'';display:block;height:2px;background:linear-gradient(to left,var(--gold),rgba(184,146,42,.3))}
-[dir="ltr"] .hc::before{background:linear-gradient(to right,var(--gold),rgba(184,146,42,.3))}
-.hc-hdr{padding:11px 16px;background:rgba(20,18,12,.9);border-bottom:1px solid rgba(255,255,255,.05);display:flex;align-items:center;gap:8px}
-.hc-dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;flex-shrink:0}
+/* Hero visual — a clean AI terminal card */
+.hero-visual{position:absolute;left:5%;top:50%;transform:translateY(-50%);width:340px;max-width:34%}
+[dir="ltr"] .hero-visual{left:auto;right:5%}
+.hv{background:linear-gradient(135deg, rgba(17,17,17,.95), rgba(10,10,10,.98));border:1px solid rgba(184,146,42,.2);overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.6),0 0 0 1px rgba(184,146,42,.08)}
+.hv-bar{height:2px;background:linear-gradient(to right, var(--gold), var(--gold2), transparent)}
+.hv-hdr{padding:12px 16px;background:rgba(184,146,42,.05);border-bottom:1px solid rgba(255,255,255,.05);display:flex;align-items:center;gap:8px}
+.hv-dots{display:flex;gap:5px}
+.hv-dot{width:8px;height:8px;border-radius:50%}
+.hv-dot:nth-child(1){background:#ff5f56}
+.hv-dot:nth-child(2){background:#ffbd2e}
+.hv-dot:nth-child(3){background:#27c93f}
+.hv-title{font-size:10px;color:rgba(255,255,255,.35);letter-spacing:.1em;text-transform:uppercase;font-family:var(--en);margin-inline-start:4px}
+.hv-live{margin-inline-start:auto;display:flex;align-items:center;gap:4px;font-size:10px;color:var(--green);font-family:var(--en)}
+.hv-live::before{content:'';width:5px;height:5px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-.hc-title{font-size:10px;color:rgba(255,255,255,.35);letter-spacing:.08em;text-transform:uppercase;font-family:var(--font-en)}
-.hc-msgs{padding:12px 14px;display:flex;flex-direction:column;gap:8px}
-.hc-bot{background:rgba(28,26,20,.9);border-right:2px solid rgba(184,146,42,.35);padding:8px 11px;font-size:11.5px;color:rgba(255,255,255,.78);line-height:1.55;max-width:86%;font-family:var(--font-ar)}
-[dir="ltr"] .hc-bot{border-right:none;border-left:2px solid rgba(184,146,42,.35);font-family:var(--font-en);font-size:12px}
-.hc-usr{background:var(--gold);padding:8px 11px;font-size:11.5px;color:var(--black);font-weight:600;line-height:1.55;max-width:86%;align-self:flex-end;font-family:var(--font-ar)}
-[dir="ltr"] .hc-usr{font-family:var(--font-en);font-size:12px}
-.hc-rec{background:rgba(6,5,3,.95);margin:0 14px 14px;border:1px solid rgba(184,146,42,.1)}
-.hc-rec-hdr{background:rgba(18,16,10,.9);padding:5px 12px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.04)}
-.hc-rec-t{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--gold);font-family:var(--font-en)}
-.hc-live{font-size:9px;color:var(--green);display:flex;align-items:center;gap:3px;font-family:var(--font-en)}
-.hc-live::before{content:'';width:4px;height:4px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
-.hc-row{display:flex;justify-content:space-between;padding:5px 12px;font-size:10px;border-bottom:1px solid rgba(255,255,255,.04)}
-.hc-row:last-child{border:none}
-.hc-lbl{color:rgba(255,255,255,.28);font-family:var(--font-ar)}
-[dir="ltr"] .hc-lbl{font-family:var(--font-en)}
-.hc-val{color:var(--white);font-weight:500;font-family:var(--font-en)}
-.hc-val.hi{color:#f87171}
+.hv-body{padding:14px}
+.hv-msg{padding:9px 12px;font-size:12px;line-height:1.55;margin-bottom:7px;border-radius:2px}
+.hv-msg.bot{background:rgba(255,255,255,.05);border-right:2px solid rgba(184,146,42,.4);color:rgba(255,255,255,.8);font-family:var(--ar)}
+[dir="ltr"] .hv-msg.bot{border-right:none;border-left:2px solid rgba(184,146,42,.4);font-family:var(--en);font-size:11.5px}
+.hv-msg.usr{background:linear-gradient(135deg, rgba(184,146,42,.15), rgba(184,146,42,.08));border:1px solid rgba(184,146,42,.2);color:rgba(255,255,255,.9);margin-right:16px;font-family:var(--ar)}
+[dir="ltr"] .hv-msg.usr{margin-right:0;margin-left:16px;font-family:var(--en);font-size:11.5px}
+.hv-rec{margin:4px 0 14px;background:rgba(0,0,0,.4);border:1px solid rgba(184,146,42,.12)}
+.hv-rec-hdr{padding:5px 12px;background:rgba(184,146,42,.08);border-bottom:1px solid rgba(184,146,42,.1);display:flex;justify-content:space-between}
+.hv-rec-t{font-size:9px;color:var(--gold);text-transform:uppercase;letter-spacing:.1em;font-family:var(--en)}
+.hv-row{display:flex;justify-content:space-between;padding:5px 12px;font-size:10px;border-bottom:1px solid rgba(255,255,255,.04)}
+.hv-row:last-child{border:none}
+.hv-lbl{color:rgba(255,255,255,.28)}
+.hv-val{color:var(--white);font-weight:500;font-family:var(--en)}
+.hv-val.urg{color:#f87171}
 
 /* ── PROBLEM STRIP ── */
-.prob-strip{background:var(--b1);border-top:1px solid rgba(184,146,42,.1);border-bottom:1px solid rgba(184,146,42,.1)}
-.prob-inner{display:flex;overflow-x:auto;scrollbar-width:none;flex-direction:row-reverse}
-[dir="ltr"] .prob-inner{flex-direction:row}
+.prob-strip{background:var(--b1);border-top:1px solid rgba(184,146,42,.12);border-bottom:1px solid rgba(184,146,42,.12);overflow:hidden}
+.prob-inner{display:flex;overflow-x:auto;scrollbar-width:none}
 .prob-inner::-webkit-scrollbar{display:none}
-.prob-item{display:flex;align-items:center;gap:10px;padding:18px 26px;border-left:1px solid rgba(255,255,255,.06);white-space:nowrap;flex-shrink:0}
-[dir="ltr"] .prob-item{border-left:none;border-right:1px solid rgba(255,255,255,.06)}
-.prob-item:last-child{border:none}
+[dir="rtl"] .prob-inner{flex-direction:row-reverse}
+.pi{display:flex;align-items:center;gap:10px;padding:16px 24px;border-inline-end:1px solid rgba(255,255,255,.06);white-space:nowrap;flex-shrink:0}
+.pi:last-child{border:none}
 .pi-x{color:#ef4444;font-size:13px;font-weight:700}
 .pi-ok{color:var(--green);font-size:13px;font-weight:700}
-.pi-txt{font-size:13px;color:rgba(255,255,255,.48)}
-[dir="rtl"] .pi-txt{font-size:12.5px}
-.pi-txt.hi{color:rgba(255,255,255,.82);font-weight:500}
+.pi-t{font-size:12.5px;color:rgba(255,255,255,.48)}
+.pi-t.hi{color:rgba(255,255,255,.85);font-weight:500}
+
+/* ── SECTIONS ── */
+.section{padding:88px 5%}
+h2{font-family:var(--display);font-size:clamp(32px,4vw,50px);font-weight:500;line-height:1.1;margin-bottom:14px}
+[dir="rtl"] h2{font-family:var(--ar);font-weight:700;font-size:clamp(28px,3.5vw,44px);line-height:1.28}
+.s-desc{font-size:14px;color:rgba(255,255,255,.38);line-height:1.88;max-width:500px}
+[dir="rtl"] .s-desc{line-height:2;font-size:13.5px}
 
 /* ── HOW IT WORKS ── */
-.section{padding:92px 6%}
-h2{font-family:var(--font-display);font-size:clamp(32px,4vw,50px);font-weight:500;line-height:1.12;margin-bottom:14px}
-[dir="rtl"] h2{font-family:var(--font-ar);font-weight:700;font-size:clamp(28px,3.5vw,44px);line-height:1.3}
-.s-desc{font-size:14px;color:rgba(255,255,255,.38);line-height:1.88;max-width:520px;font-weight:300}
-[dir="rtl"] .s-desc{line-height:2;font-size:13.5px}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:52px}
-.step{background:var(--b1);padding:38px 30px;position:relative;overflow:hidden;transition:background .3s}
-.step:hover{background:var(--b2)}
-.step::before{content:'';position:absolute;top:0;right:0;width:2px;height:0;background:var(--gold);transition:height .4s}
-[dir="ltr"] .step::before{right:auto;left:0}
-.step:hover::before{height:100%}
-.step-n{font-family:var(--font-display);font-size:64px;font-weight:400;color:rgba(184,146,42,.08);display:block;line-height:1;margin-bottom:16px}
-.step-title{font-size:15.5px;font-weight:600;color:var(--white);margin-bottom:9px}
-[dir="rtl"] .step-title{font-size:15px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px}
+.step{background:var(--b1);padding:36px 28px;border-top:2px solid transparent;transition:all .3s;position:relative;overflow:hidden}
+.step:hover{background:var(--b2);border-top-color:var(--gold)}
+.step-n{font-family:var(--display);font-size:60px;font-weight:400;color:rgba(184,146,42,.1);display:block;line-height:1;margin-bottom:14px}
+.step-title{font-size:15px;font-weight:600;color:var(--white);margin-bottom:9px}
 .step-desc{font-size:13px;color:var(--muted);line-height:1.78}
 [dir="rtl"] .step-desc{line-height:1.9}
-.step-tag{display:inline-block;margin-top:16px;font-size:10px;color:rgba(184,146,42,.48);letter-spacing:.06em;text-transform:uppercase;font-family:var(--font-en)}
+.step-tag{display:inline-block;margin-top:14px;font-size:10px;color:rgba(184,146,42,.5);letter-spacing:.06em;text-transform:uppercase;font-family:var(--en)}
 
 /* ── STATS BAR ── */
-.stats-bar{background:var(--gold);padding:26px 6%}
-.sb-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;max-width:1080px;margin:0 auto}
-.sb-item{text-align:center;min-width:70px}
-.sb-n{font-family:var(--font-display);font-size:36px;font-weight:500;color:var(--black);line-height:1}
-.sb-l{font-size:11px;color:rgba(0,0,0,.5);margin-top:4px;text-transform:uppercase;letter-spacing:.04em}
-[dir="rtl"] .sb-l{font-size:12px;letter-spacing:0}
-.sb-div{width:1px;height:36px;background:rgba(0,0,0,.1)}
+.stats-bar{background:var(--gold);padding:24px 5%}
+.sb{display:flex;justify-content:space-around;align-items:center;flex-wrap:wrap;gap:20px;max-width:1000px;margin:0 auto}
+.sbi{text-align:center}
+.sbi-n{font-family:var(--display);font-size:34px;font-weight:500;color:var(--black);line-height:1}
+.sbi-l{font-size:11px;color:rgba(0,0,0,.5);margin-top:4px;text-transform:uppercase;letter-spacing:.04em}
+[dir="rtl"] .sbi-l{font-size:12px;letter-spacing:0}
 
 /* ── INDUSTRIES ── */
-.industries{background:var(--b1);padding:92px 0}
-.ind-hdr{padding:0 6%;margin-bottom:44px}
-.ind-tabs{display:flex;border-bottom:1px solid rgba(255,255,255,.07);padding:0 6%;overflow-x:auto;scrollbar-width:none;direction:rtl}
-[dir="ltr"] .ind-tabs{direction:ltr}
+.industries{background:var(--b1);padding:88px 0}
+.ind-hdr{padding:0 5%;margin-bottom:44px}
+.ind-tabs{display:flex;border-bottom:1px solid rgba(255,255,255,.08);padding:0 5%;overflow-x:auto;scrollbar-width:none}
 .ind-tabs::-webkit-scrollbar{display:none}
-.ind-tab{padding:13px 20px;border-bottom:2px solid transparent;margin-bottom:-1px;font-size:13px;color:rgba(255,255,255,.38);cursor:pointer;white-space:nowrap;transition:all .2s;flex-shrink:0;background:none;border-left:none;border-right:none;border-top:none;font-family:var(--font-ar)}
-[dir="ltr"] .ind-tab{font-family:var(--font-en)}
+[dir="rtl"] .ind-tabs{direction:rtl}
+.ind-tab{padding:12px 20px;border-bottom:2px solid transparent;margin-bottom:-1px;font-size:13px;color:rgba(255,255,255,.38);cursor:pointer;white-space:nowrap;transition:all .25s;flex-shrink:0;background:none;border-top:none;border-left:none;border-right:none;font-family:var(--ar)}
+[dir="ltr"] .ind-tab{font-family:var(--en)}
 .ind-tab:hover{color:rgba(255,255,255,.65)}
 .ind-tab.active{color:var(--gold);border-bottom-color:var(--gold)}
-.ind-panels{min-height:440px}
-.ind-panel{display:none;grid-template-columns:1fr 1fr;min-height:440px}
+.ind-panels{min-height:400px}
+.ind-panel{display:none;grid-template-columns:1fr 1fr;min-height:400px}
 .ind-panel.active{display:grid}
-.ind-img-wrap{position:relative;overflow:hidden;order:2}
-[dir="ltr"] .ind-img-wrap{order:unset}
-.ind-img-wrap img{width:100%;height:100%;object-fit:cover;filter:brightness(.6) saturate(.85);display:block;transition:transform .7s ease}
+
+/* Industry image with CSS fallback backgrounds */
+.ind-img-wrap{position:relative;overflow:hidden;min-height:400px}
+.ind-img-wrap img{width:100%;height:100%;object-fit:cover;filter:brightness(.6) saturate(.8);display:block;transition:transform .7s ease;position:absolute;inset:0}
 .ind-panel.active .ind-img-wrap img{transform:scale(1.04)}
-.ind-img-fade{position:absolute;inset:0;background:linear-gradient(to left,transparent 50%,var(--b1) 95%)}
-[dir="ltr"] .ind-img-fade{background:linear-gradient(to right,transparent 50%,var(--b1) 95%)}
-.ind-content{background:var(--b2);padding:48px 44px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid rgba(184,146,42,.1);text-align:right;order:1}
-[dir="ltr"] .ind-content{border-right:none;border-left:1px solid rgba(184,146,42,.1);text-align:left;order:unset}
-.ind-icon-lg{font-size:34px;margin-bottom:14px;display:block}
-.ind-name{font-family:var(--font-ar);font-size:26px;font-weight:700;color:var(--white);margin-bottom:12px}
-[dir="ltr"] .ind-name{font-family:var(--font-display);font-size:28px;font-weight:500}
-.ind-desc{font-size:13px;color:rgba(255,255,255,.48);line-height:1.9;margin-bottom:22px;max-width:380px}
-[dir="ltr"] .ind-desc{font-size:13.5px;line-height:1.8}
-.ind-pts{display:flex;flex-direction:column;gap:9px;margin-bottom:26px}
-.ind-pt{display:flex;align-items:center;gap:10px;font-size:13px;color:rgba(255,255,255,.68);flex-direction:row-reverse;justify-content:flex-end}
-[dir="ltr"] .ind-pt{flex-direction:row;justify-content:flex-start}
-.ipt-line{width:16px;height:1px;background:var(--gold);flex-shrink:0}
-.ind-cta{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;color:var(--gold);text-decoration:none;letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid rgba(184,146,42,.28);padding-bottom:3px;width:fit-content;transition:border-color .2s;flex-direction:row-reverse;font-family:var(--font-en)}
-[dir="ltr"] .ind-cta{flex-direction:row}
+.ind-img-fade{position:absolute;inset:0;z-index:1}
+[dir="rtl"] .ind-img-fade{background:linear-gradient(to left, transparent 30%, var(--b1) 90%)}
+[dir="ltr"] .ind-img-fade{background:linear-gradient(to right, transparent 30%, var(--b1) 90%)}
+
+/* CSS fallback background per industry */
+.ind-img-wrap.law{background:linear-gradient(135deg, #0a0e14, #111820)}
+.ind-img-wrap.med{background:linear-gradient(135deg, #0a1214, #0e1c1c)}
+.ind-img-wrap.re{background:linear-gradient(135deg, #0e100a, #141810)}
+.ind-img-wrap.eng{background:linear-gradient(135deg, #0e0c0a, #181410)}
+.ind-img-wrap.acc{background:linear-gradient(135deg, #0a0a12, #10101a)}
+.ind-img-wrap.hot{background:linear-gradient(135deg, #100a0e, #180e16)}
+
+.ind-content{background:var(--b2);padding:44px 40px;display:flex;flex-direction:column;justify-content:center;border-inline-end:1px solid rgba(184,146,42,.1);text-align:right}
+[dir="ltr"] .ind-content{text-align:left}
+.ind-icon-lg{font-size:32px;margin-bottom:12px;display:block}
+.ind-name{font-family:var(--ar);font-size:25px;font-weight:700;color:var(--white);margin-bottom:10px}
+[dir="ltr"] .ind-name{font-family:var(--display);font-size:27px;font-weight:500}
+.ind-desc{font-size:13px;color:rgba(255,255,255,.48);line-height:1.88;margin-bottom:20px;max-width:360px}
+[dir="ltr"] .ind-desc{line-height:1.78}
+.ind-pts{display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+.ind-pt{display:flex;align-items:center;gap:9px;font-size:13px;color:rgba(255,255,255,.68)}
+[dir="rtl"] .ind-pt{flex-direction:row-reverse;justify-content:flex-end}
+.ipt-l{width:14px;height:1px;background:var(--gold);flex-shrink:0}
+.ind-cta{display:inline-flex;align-items:center;gap:7px;font-size:11px;color:var(--gold);text-decoration:none;letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid rgba(184,146,42,.25);padding-bottom:3px;width:fit-content;transition:border-color .2s;font-family:var(--en)}
+[dir="rtl"] .ind-cta{flex-direction:row-reverse}
 .ind-cta:hover{border-color:var(--gold)}
-.ind-controls{display:flex;align-items:center;gap:12px;padding:18px 6% 0}
-.i-arrow{width:40px;height:40px;border:1px solid rgba(184,146,42,.22);background:transparent;color:var(--gold);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;transition:all .2s}
-.i-arrow:hover{background:var(--gold);color:var(--black)}
-.i-dots{display:flex;gap:7px;align-items:center}
-.i-dot{width:18px;height:2px;background:rgba(255,255,255,.14);cursor:pointer;transition:all .3s}
-.i-dot.active{width:32px;background:var(--gold)}
-.i-count{font-size:12px;color:var(--muted);margin-inline-start:6px;letter-spacing:.06em;font-family:var(--font-en)}
+.ind-nav{display:flex;align-items:center;gap:10px;padding:16px 5% 0}
+.i-arr{width:38px;height:38px;border:1px solid rgba(184,146,42,.2);background:transparent;color:var(--gold);cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;transition:all .2s;font-family:sans-serif}
+.i-arr:hover{background:var(--gold);color:var(--black)}
+.i-dots{display:flex;gap:6px;align-items:center}
+.i-dot{width:16px;height:2px;background:rgba(255,255,255,.14);cursor:pointer;transition:all .3s}
+.i-dot.active{width:28px;background:var(--gold)}
+.i-cnt{font-size:11px;color:var(--muted);margin-inline-start:6px;font-family:var(--en)}
 
-/* ── CHATBOT ── */
-.chat-section{background:var(--black);padding:92px 6%}
-.chat-layout{display:grid;grid-template-columns:1fr 1fr;gap:68px;align-items:start;margin-top:50px}
-.chat-feats{display:flex;flex-direction:column;gap:20px;margin-top:26px}
-.cf{display:flex;gap:16px;align-items:flex-start;flex-direction:row-reverse}
-[dir="ltr"] .cf{flex-direction:row}
-.cf-n{font-family:var(--font-display);font-size:21px;color:rgba(184,146,42,.22);width:26px;flex-shrink:0;line-height:1;margin-top:1px}
-.cf-title{font-size:14px;font-weight:600;color:var(--white);margin-bottom:3px}
-.cf-desc{font-size:13px;color:var(--muted);line-height:1.7}
-[dir="rtl"] .cf-desc{line-height:1.85}
+/* ── CTA SECTION ── */
+.cta-section{background:var(--black);padding:88px 5%}
+.cta-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;max-width:1100px;margin:0 auto}
+.cta-text{}
+.cta-steps{display:flex;flex-direction:column;gap:0;margin-top:36px}
+.cta-step{display:flex;gap:0;padding-bottom:24px;position:relative}
+.cta-step:not(:last-child)::after{content:'';position:absolute;inset-inline-start:15px;top:36px;width:1px;height:calc(100% - 8px);background:rgba(184,146,42,.2)}
+.cta-num{width:32px;height:32px;border:1px solid rgba(184,146,42,.35);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--gold);flex-shrink:0;margin-inline-end:14px;margin-top:2px;background:rgba(184,146,42,.05)}
+.cta-st{font-size:14px;font-weight:600;color:var(--white);margin-bottom:3px}
+.cta-sd{font-size:12.5px;color:var(--muted);line-height:1.65}
+.cta-card{background:var(--b1);border:1px solid rgba(184,146,42,.15);padding:36px;position:relative;overflow:hidden}
+.cta-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right, var(--gold), rgba(184,146,42,.3))}
+.cta-card-title{font-family:var(--display);font-size:22px;font-weight:500;color:var(--white);margin-bottom:8px}
+[dir="rtl"] .cta-card-title{font-family:var(--ar);font-weight:700;font-size:20px}
+.cta-card-sub{font-size:13px;color:var(--muted);margin-bottom:28px;line-height:1.65}
+.cta-info{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.ci-row{display:flex;align-items:center;gap:10px;font-size:13px;color:rgba(255,255,255,.5)}
+.ci-icon{color:var(--gold);font-size:14px;width:18px;flex-shrink:0}
+.ci-row a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s}
+.ci-row a:hover{color:var(--gold)}
+.cta-btn{display:block;width:100%;background:var(--gold);color:var(--black);padding:14px;font-size:14px;font-weight:600;text-align:center;text-decoration:none;transition:all .2s;margin-bottom:10px;font-family:var(--ar)}
+[dir="ltr"] .cta-btn{font-family:var(--en)}
+.cta-btn:hover{background:var(--gold2);transform:translateY(-1px)}
+.cta-btn-ghost{display:block;width:100%;border:1px solid rgba(184,146,42,.3);color:var(--gold);padding:12px;font-size:13px;text-align:center;text-decoration:none;transition:all .2s;font-family:var(--en)}
+.cta-btn-ghost:hover{background:rgba(184,146,42,.08)}
+.cta-note{text-align:center;font-size:10px;color:rgba(255,255,255,.2);margin-top:10px;letter-spacing:.04em;text-transform:uppercase;font-family:var(--en)}
 
-/* Chat widget */
-.cw{background:var(--b1);border:1px solid rgba(255,255,255,.07);position:relative}
-.cw::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold)}
-.cw-hdr{background:var(--b2);padding:13px 17px;display:flex;align-items:center;gap:10px}
-.cw-av{width:34px;height:34px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:14px;font-weight:600;color:var(--black);flex-shrink:0}
-.cw-nm{font-size:13px;font-weight:500;color:var(--white)}
-.cw-st{font-size:11px;color:var(--gold);display:flex;align-items:center;gap:4px;margin-top:2px}
-.cw-st::before{content:'';width:5px;height:5px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
-.cw-msgs{height:280px;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;background:rgba(0,0,0,.22)}
-.cw-msgs::-webkit-scrollbar{width:2px}
-.cw-msgs::-webkit-scrollbar-thumb{background:rgba(184,146,42,.2)}
-.cm{display:flex;gap:7px;max-width:90%;animation:msgIn .2s ease}
-@keyframes msgIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
-.cm.b{align-self:flex-start}
-.cm.u{align-self:flex-end;flex-direction:row-reverse}
-.cmav{width:22px;height:22px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:600;color:var(--black);flex-shrink:0;align-self:flex-end}
-.cm-bbl{padding:9px 13px;font-size:13px;line-height:1.55}
-.cm.b .cm-bbl{background:var(--b3);color:rgba(255,255,255,.85);border-right:2px solid rgba(184,146,42,.3)}
-[dir="ltr"] .cm.b .cm-bbl{border-right:none;border-left:2px solid rgba(184,146,42,.3)}
-.cm.u .cm-bbl{background:var(--gold);color:var(--black);font-weight:500}
-.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-.chip{padding:5px 11px;border:1px solid rgba(184,146,42,.28);color:rgba(184,146,42,.75);font-size:11.5px;cursor:pointer;font-family:var(--font-ar);transition:all .15s}
-[dir="ltr"] .chip{font-family:var(--font-en)}
-.chip:hover{background:var(--gold);color:var(--black);border-color:var(--gold)}
-.tw{display:flex;gap:4px;padding:9px 13px;background:var(--b3);border-right:2px solid rgba(184,146,42,.3);width:fit-content}
-[dir="ltr"] .tw{border-right:none;border-left:2px solid rgba(184,146,42,.3)}
-.td{width:5px;height:5px;background:var(--muted);border-radius:50%;animation:tdot 1.2s infinite}
-.td:nth-child(2){animation-delay:.2s}.td:nth-child(3){animation-delay:.4s}
-@keyframes tdot{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
-.cw-ftr{padding:10px 12px;background:var(--b2)}
-.cw-row{display:flex;gap:7px;background:var(--black);border:1px solid rgba(255,255,255,.08);padding:7px 7px 7px 13px;transition:border-color .2s;flex-direction:row-reverse}
-[dir="ltr"] .cw-row{flex-direction:row}
-.cw-row:focus-within{border-color:rgba(184,146,42,.4)}
-textarea.cw-inp{flex:1;background:transparent;border:none;color:var(--white);font-family:var(--font-ar);font-size:13px;resize:none;outline:none;max-height:52px;line-height:1.4;text-align:right;direction:rtl}
-[dir="ltr"] textarea.cw-inp{font-family:var(--font-en);text-align:left;direction:ltr}
-textarea.cw-inp::placeholder{color:rgba(255,255,255,.2)}
-.cw-send{width:30px;height:30px;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0}
-.cw-send:hover{background:var(--gold2)}
-.cw-send:disabled{background:rgba(184,146,42,.2);cursor:not-allowed}
-.cw-note{text-align:center;font-size:10px;color:rgba(255,255,255,.18);margin-top:6px;letter-spacing:.04em;text-transform:uppercase;font-family:var(--font-en)}
+/* ── SERVICES PREVIEW ── */
+.svcs{background:var(--b2);padding:88px 5%}
+.svcs-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;margin-top:48px}
+.svc{background:var(--b1);padding:24px 20px;border-top:2px solid transparent;transition:all .3s;cursor:default}
+.svc:hover{background:var(--b3);border-top-color:var(--gold)}
+.svc-icon{font-size:28px;margin-bottom:12px;display:block}
+.svc-name{font-size:13px;font-weight:600;color:var(--white);margin-bottom:6px;line-height:1.35}
+.svc-replaces{font-size:11px;color:rgba(184,146,42,.6)}
+.svc-price{margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.06);font-size:13px;color:var(--gold);font-weight:600;font-family:var(--en)}
+.svc-mo{font-size:10px;color:var(--muted);font-weight:400}
 
 /* ── FOOTER ── */
-footer{background:#050505;padding:52px 6% 28px;border-top:1px solid rgba(255,255,255,.04)}
-.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
-.f-logo{display:flex;align-items:center;gap:10px;margin-bottom:14px;text-decoration:none}
-.f-mark{width:30px;height:30px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:14px;font-weight:600;color:var(--black)}
-.f-brand{font-family:var(--font-display);font-size:16px;font-weight:600;color:var(--white)}
-.f-brand span{color:var(--gold)}
-.f-desc{font-size:13px;color:rgba(255,255,255,.26);line-height:1.8;margin-bottom:16px}
-[dir="rtl"] .f-desc{line-height:2}
-.f-info{font-size:12.5px;color:rgba(255,255,255,.26);margin-bottom:5px}
-.f-info a{color:rgba(255,255,255,.26);text-decoration:none;transition:color .2s}
-.f-info a:hover{color:var(--gold)}
-.f-col-t{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.18);margin-bottom:14px;font-family:var(--font-en)}
-.f-lnk{display:block;font-size:13px;color:rgba(255,255,255,.26);text-decoration:none;margin-bottom:9px;transition:color .2s}
+footer{background:#050505;padding:48px 5% 24px;border-top:1px solid rgba(255,255,255,.05)}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.f-logo{display:flex;align-items:center;gap:10px;margin-bottom:12px;text-decoration:none}
+.f-mk{width:28px;height:28px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:13px;font-weight:600;color:var(--black)}
+.f-bn{font-family:var(--display);font-size:15px;font-weight:600;color:var(--white)}
+.f-bn span{color:var(--gold)}
+.f-desc{font-size:12.5px;color:rgba(255,255,255,.25);line-height:1.75;margin-bottom:14px}
+.f-contact{font-size:12.5px;color:rgba(255,255,255,.25);margin-bottom:4px}
+.f-contact a{color:rgba(255,255,255,.25);text-decoration:none;transition:color .2s}
+.f-contact a:hover{color:var(--gold)}
+.f-ct{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.18);margin-bottom:12px;font-family:var(--en)}
+.f-lnk{display:block;font-size:12.5px;color:rgba(255,255,255,.25);text-decoration:none;margin-bottom:8px;transition:color .2s}
 .f-lnk:hover{color:var(--gold)}
-.ft-btm{display:flex;justify-content:space-between;align-items:center;padding-top:22px;border-top:1px solid rgba(255,255,255,.04);font-size:11px;color:rgba(255,255,255,.16)}
-
-/* ── REVEAL ── */
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
-.reveal.v{opacity:1;transform:translateY(0)}
-.rd1{transition-delay:.1s}.rd2{transition-delay:.2s}
+.ft-btm{display:flex;justify-content:space-between;align-items:center;padding-top:20px;border-top:1px solid rgba(255,255,255,.05);font-size:11px;color:rgba(255,255,255,.15)}
 
 /* ── RESPONSIVE ── */
 @media(max-width:960px){
   .nav-links{display:none}.mob-tog{display:flex}
-  .hero-card{display:none}
-  h1{font-size:clamp(36px,7vw,54px)}
-  .steps,.ft-grid{grid-template-columns:1fr}
+  .hero-visual{display:none}
+  .steps,.svcs-grid,.ft-grid{grid-template-columns:1fr 1fr}
   .ind-panel{grid-template-columns:1fr}
-  .ind-img-wrap{min-height:220px;order:1}
-  .ind-content{order:2;text-align:right;padding:32px 28px}
-  .chat-layout{grid-template-columns:1fr}
-  .sb-inner{justify-content:center;gap:24px}
-  .sb-div{display:none}
-  .step{border-top:1px solid rgba(255,255,255,.06)}
+  .ind-img-wrap{min-height:200px;order:1}
+  .ind-content{order:2;padding:28px 24px}
+  .cta-inner{grid-template-columns:1fr}
+  .sb{justify-content:center;gap:24px}
 }
 @media(max-width:560px){
-  .hero-stats{gap:18px}
-  .hero-btns{flex-direction:column;align-items:flex-start}
-  .btn-gold,.btn-ghost{text-align:center;justify-content:center;width:100%}
+  .steps,.svcs-grid{grid-template-columns:1fr}
   .ft-grid{grid-template-columns:1fr 1fr}
+  .hero-btns{flex-direction:column}
+  .btn-gold,.btn-ghost{text-align:center;justify-content:center}
+  .hero-stats{gap:16px}
 }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav id="nav">
+<nav>
   <a href="index.html" class="logo">
-    <div class="logo-mark">IA</div>
-    <div class="logo-text"><span>IA</span> AI Solutions</div>
+    <div class="lm">IA</div>
+    <div class="lt"><span>IA</span> AI Solutions</div>
   </a>
-  <div style="display:flex;align-items:center;gap:20px">
-    <div class="nav-links" id="nav-links">
+  <div class="nav-r">
+    <div class="nav-links">
       <a href="services.html" class="nl" data-ar="الخدمات" data-en="Services">الخدمات</a>
       <a href="industries.html" class="nl" data-ar="القطاعات" data-en="Industries">القطاعات</a>
       <a href="about.html" class="nl" data-ar="من نحن" data-en="About">من نحن</a>
-      <a href="https://simi448800.github.io/lawfirm_chatbox-/demo.html" target="_blank" class="nl" data-ar="العرض المباشر" data-en="Live demo">العرض المباشر</a>
+      <a href="demo.html" class="nl" data-ar="العرض المباشر" data-en="Live demo">العرض المباشر</a>
       <a href="contact.html" class="nav-cta" data-ar="ابدأ الآن" data-en="Get started">ابدأ الآن</a>
     </div>
     <div class="lang-toggle">
-      <button class="lt-btn" id="btn-ar" onclick="setLang('ar')">AR</button>
-      <button class="lt-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+      <button class="lb active" id="btn-ar" onclick="setLang('ar')">AR</button>
+      <button class="lb" id="btn-en" onclick="setLang('en')">EN</button>
     </div>
     <div class="mob-tog" onclick="toggleNav()"><span></span><span></span><span></span></div>
   </div>
@@ -307,56 +336,58 @@ footer{background:#050505;padding:52px 6% 28px;border-top:1px solid rgba(255,255
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
-  <div class="hero-glow"></div>
+  <div class="hero-city"></div>
+
   <div class="hero-content">
     <div class="eyebrow">
       <div class="e-line"></div>
-      <div class="e-tag" data-ar="أنظمة ذكاء اصطناعي للأعمال · المملكة العربية السعودية" data-en="AI-powered business systems · Saudi Arabia">أنظمة ذكاء اصطناعي للأعمال · المملكة العربية السعودية</div>
+      <div class="e-tag" data-ar="أنظمة ذكاء اصطناعي · المملكة العربية السعودية" data-en="AI-powered business systems · Saudi Arabia">أنظمة ذكاء اصطناعي · المملكة العربية السعودية</div>
     </div>
     <h1 data-ar="منشأتك في خدمة<br>عملائها<br><em>على مدار الساعة</em>" data-en="Your business<br><em>never sleeps</em>anymore">منشأتك في خدمة<br>عملائها<br><em>على مدار الساعة</em></h1>
     <p class="hero-p">
-      <span data-ar="نستبدل التكاليف التشغيلية المرتفعة بأنظمة ذكاء اصطناعي تعمل " data-en="We replace expensive, inconsistent overhead with AI systems that work ">نستبدل التكاليف التشغيلية المرتفعة بأنظمة ذكاء اصطناعي تعمل </span>
-      <strong data-ar="24 ساعة يومياً بالعربية والإنجليزية" data-en="24 hours a day, in Arabic and English,">24 ساعة يومياً بالعربية والإنجليزية</strong>
-      <span data-ar=" بجزء من تكلفة الموظف. جاهز للتشغيل خلال 7 أيام." data-en=" at a fraction of the cost. Live in 7 days."> بجزء من تكلفة الموظف. جاهز للتشغيل خلال 7 أيام.</span>
+      <span data-ar="نستبدل التكاليف التشغيلية المرتفعة بأنظمة ذكاء اصطناعي تعمل " data-en="We replace expensive overhead with AI systems that work ">نستبدل التكاليف التشغيلية المرتفعة بأنظمة ذكاء اصطناعي تعمل </span><strong data-ar="24 ساعة بالعربية والإنجليزية" data-en="24 hours a day, in Arabic and English,">24 ساعة بالعربية والإنجليزية</strong><span data-ar=" بجزء من تكلفة الموظف." data-en=" at a fraction of the cost."> بجزء من تكلفة الموظف.</span>
     </p>
     <div class="hero-btns">
-      <a href="https://simi448800.github.io/lawfirm_chatbox-/demo.html" target="_blank" class="btn-gold" data-ar="جرّب العرض المباشر" data-en="Try the live demo">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        جرّب العرض المباشر
-      </a>
+      <a href="demo.html" class="btn-gold" data-ar="جرّب العرض المباشر" data-en="Try the live demo">جرّب العرض المباشر</a>
       <a href="contact.html" class="btn-ghost" data-ar="طلب عرض أسعار" data-en="Request a proposal">طلب عرض أسعار</a>
     </div>
     <div class="hero-stats">
-      <div><div class="hstat-n">24/7</div><div class="hstat-l" data-ar="متاح دائماً" data-en="Always on">متاح دائماً</div></div>
-      <div class="h-divider"></div>
-      <div><div class="hstat-n">10</div><div class="hstat-l" data-ar="خدمات ذكاء اصطناعي" data-en="AI services">خدمات ذكاء اصطناعي</div></div>
-      <div class="h-divider"></div>
-      <div><div class="hstat-n">7</div><div class="hstat-l" data-ar="أيام للتشغيل" data-en="Days to live">أيام للتشغيل</div></div>
+      <div class="hstat"><div class="hstat-n">24/7</div><div class="hstat-l" data-ar="متاح دائماً" data-en="Always on">متاح دائماً</div></div>
+      <div class="hstat"><div class="hstat-n">10</div><div class="hstat-l" data-ar="خدمات ذكاء اصطناعي" data-en="AI services">خدمات ذكاء اصطناعي</div></div>
+      <div class="hstat"><div class="hstat-n">7</div><div class="hstat-l" data-ar="أيام للتشغيل" data-en="Days to live">أيام للتشغيل</div></div>
     </div>
   </div>
 
-  <!-- Floating card - Arabic content by default -->
-  <div class="hero-card">
-    <div class="hc">
-      <div class="hc-hdr"><div class="hc-dot"></div><span class="hc-title">LIVE INTAKE · RUNNING</span></div>
-      <div class="hc-msgs" id="hc-msgs-ar">
-        <div class="hc-bot">السلام عليكم، أنا المساعد القانوني لمكتب حسان محاسني. كيف يمكنني مساعدتكم؟</div>
-        <div class="hc-usr">لدي نزاع تجاري عاجل في جدة</div>
-        <div class="hc-bot">بكل سرور — هل يمكنكم إخبارنا باسمكم الكريم ووسيلة التواصل لمتابعة الأمر فوراً؟</div>
-        <div class="hc-usr">محمد الحربي، 0551 234 5678</div>
+  <!-- AI Terminal Card -->
+  <div class="hero-visual">
+    <div class="hv">
+      <div class="hv-bar"></div>
+      <div class="hv-hdr">
+        <div class="hv-dots"><div class="hv-dot"></div><div class="hv-dot"></div><div class="hv-dot"></div></div>
+        <span class="hv-title">LIVE INTAKE · ACTIVE</span>
+        <span class="hv-live">Recording</span>
       </div>
-      <div class="hc-msgs" id="hc-msgs-en" style="display:none">
-        <div class="hc-bot" style="font-family:var(--font-en);font-size:12px">Good day. I am the intake assistant for Hassan Mahassni Law Firm. How may I help you?</div>
-        <div class="hc-usr" style="font-family:var(--font-en);font-size:12px">I have an urgent corporate dispute in Jeddah</div>
-        <div class="hc-bot" style="font-family:var(--font-en);font-size:12px">Of course — could you provide your name and contact number so our team can follow up urgently?</div>
-        <div class="hc-usr" style="font-family:var(--font-en);font-size:12px">Mohammed Al-Harbi, 0551 234 5678</div>
+      <div class="hv-body" id="hv-ar">
+        <div class="hv-msg bot">السلام عليكم، أنا المساعد القانوني لمكتب حسان محاسني. كيف يمكنني مساعدتكم؟</div>
+        <div class="hv-msg usr">لدي نزاع تجاري عاجل — شركتي تواجه دعوى قضائية</div>
+        <div class="hv-msg bot">أنا أسمعكم. هل يمكنكم مشاركة اسمكم الكريم وتفاصيل القضية؟</div>
+        <div class="hv-rec">
+          <div class="hv-rec-hdr"><span class="hv-rec-t">INTAKE RECORD</span><span class="hv-live">Live</span></div>
+          <div class="hv-row"><span class="hv-lbl" data-ar="النوع" data-en="Matter">النوع</span><span class="hv-val">نزاع تجاري</span></div>
+          <div class="hv-row"><span class="hv-lbl" data-ar="الإلحاح" data-en="Urgency">الإلحاح</span><span class="hv-val urg">عاجل</span></div>
+          <div class="hv-row"><span class="hv-lbl" data-ar="الحالة" data-en="Status">الحالة</span><span class="hv-val" style="color:var(--green)">جارٍ التسجيل</span></div>
+        </div>
       </div>
-      <div class="hc-rec">
-        <div class="hc-rec-hdr"><span class="hc-rec-t">INTAKE RECORD</span><span class="hc-live">Recording</span></div>
-        <div class="hc-row"><span class="hc-lbl" data-ar="الاسم" data-en="Name">الاسم</span><span class="hc-val">محمد الحربي</span></div>
-        <div class="hc-row"><span class="hc-lbl" data-ar="التواصل" data-en="Contact">التواصل</span><span class="hc-val">0551 234 5678</span></div>
-        <div class="hc-row"><span class="hc-lbl" data-ar="نوع القضية" data-en="Matter">نوع القضية</span><span class="hc-val" data-ar="نزاع تجاري" data-en="Corporate dispute">نزاع تجاري</span></div>
-        <div class="hc-row"><span class="hc-lbl" data-ar="الإلحاح" data-en="Urgency">الإلحاح</span><span class="hc-val hi" data-ar="عاجل — أولوية" data-en="High — priority">عاجل — أولوية</span></div>
+      <div class="hv-body" id="hv-en" style="display:none">
+        <div class="hv-msg bot" style="font-family:var(--en);font-size:11.5px">Good day. I am the intake assistant for Hassan Mahassni Law Firm. How may I help you?</div>
+        <div class="hv-msg usr" style="font-family:var(--en);font-size:11.5px">I have an urgent corporate dispute — my company is facing a lawsuit</div>
+        <div class="hv-msg bot" style="font-family:var(--en);font-size:11.5px">I understand. Could you share your name and details of the matter?</div>
+        <div class="hv-rec">
+          <div class="hv-rec-hdr"><span class="hv-rec-t">INTAKE RECORD</span><span class="hv-live">Live</span></div>
+          <div class="hv-row"><span class="hv-lbl">Matter</span><span class="hv-val">Corporate dispute</span></div>
+          <div class="hv-row"><span class="hv-lbl">Urgency</span><span class="hv-val urg">High</span></div>
+          <div class="hv-row"><span class="hv-lbl">Status</span><span class="hv-val" style="color:var(--green)">Recording</span></div>
+        </div>
       </div>
     </div>
   </div>
@@ -364,209 +395,232 @@ footer{background:#050505;padding:52px 6% 28px;border-top:1px solid rgba(255,255
 
 <!-- PROBLEM STRIP -->
 <div class="prob-strip">
-  <div class="prob-inner" id="prob-inner">
-    <div class="prob-item"><span class="pi-x">✕</span><span class="pi-txt" data-ar="استفسارات تُفقد خارج أوقات العمل" data-en="Enquiries missed after hours">استفسارات تُفقد خارج أوقات العمل</span></div>
-    <div class="prob-item"><span class="pi-x">✕</span><span class="pi-txt" data-ar="موظفو الاستقبال لا يواكبون النمو" data-en="Receptionists who don't scale">موظفو الاستقبال لا يواكبون النمو</span></div>
-    <div class="prob-item"><span class="pi-x">✕</span><span class="pi-txt" data-ar="ساعات تُهدر على عملاء غير مؤهلين" data-en="Hours wasted on bad leads">ساعات تُهدر على عملاء غير مؤهلين</span></div>
-    <div class="prob-item"><span class="pi-x">✕</span><span class="pi-txt" data-ar="أخطاء في إدخال البيانات يدوياً" data-en="Manual data entry errors">أخطاء في إدخال البيانات يدوياً</span></div>
-    <div class="prob-item"><span class="pi-x">✕</span><span class="pi-txt" data-ar="تحصيل الفواتير المتأخرة يدوياً" data-en="Overdue invoices chased manually">تحصيل الفواتير المتأخرة يدوياً</span></div>
-    <div class="prob-item"><span class="pi-ok">✓</span><span class="pi-txt hi" data-ar="كل هذا — تحل محله أنظمة الذكاء الاصطناعي" data-en="All of this — replaced by AI">كل هذا — تحل محله أنظمة الذكاء الاصطناعي</span></div>
+  <div class="prob-inner">
+    <div class="pi"><span class="pi-x">✕</span><span class="pi-t" data-ar="استفسارات تُفقد خارج أوقات العمل" data-en="Enquiries missed after hours">استفسارات تُفقد خارج أوقات العمل</span></div>
+    <div class="pi"><span class="pi-x">✕</span><span class="pi-t" data-ar="موظفو الاستقبال لا يواكبون النمو" data-en="Receptionists who don't scale">موظفو الاستقبال لا يواكبون النمو</span></div>
+    <div class="pi"><span class="pi-x">✕</span><span class="pi-t" data-ar="ساعات تُهدر على عملاء غير مؤهلين" data-en="Hours wasted on unqualified leads">ساعات تُهدر على عملاء غير مؤهلين</span></div>
+    <div class="pi"><span class="pi-x">✕</span><span class="pi-t" data-ar="إدخال بيانات يدوي ومكلف" data-en="Expensive manual data entry">إدخال بيانات يدوي ومكلف</span></div>
+    <div class="pi"><span class="pi-x">✕</span><span class="pi-t" data-ar="تحصيل فواتير متأخرة يدوياً" data-en="Chasing overdue invoices manually">تحصيل فواتير متأخرة يدوياً</span></div>
+    <div class="pi"><span class="pi-ok">✓</span><span class="pi-t hi" data-ar="كل هذا تحله أنظمة الذكاء الاصطناعي" data-en="All solved by AI systems">كل هذا تحله أنظمة الذكاء الاصطناعي</span></div>
   </div>
 </div>
 
 <!-- HOW IT WORKS -->
 <section class="section" style="background:var(--black)">
-  <div class="eyebrow reveal"><div class="e-line"></div><div class="e-tag" data-ar="كيف يعمل النظام" data-en="How it works">كيف يعمل النظام</div></div>
-  <h2 class="reveal" data-ar="جاهز للتشغيل خلال 7 أيام عمل" data-en="Live on your website in 7 days">جاهز للتشغيل خلال 7 أيام عمل</h2>
-  <p class="s-desc reveal" data-ar="لا حاجة لفريق تقني. لا متطلبات تقنية من جانبكم. نتولى كل شيء من اليوم الأول حتى الإطلاق." data-en="No IT department. No technical knowledge. We handle everything from day one to go-live.">لا حاجة لفريق تقني. لا متطلبات تقنية من جانبكم. نتولى كل شيء من اليوم الأول حتى الإطلاق.</p>
-  <div class="steps reveal">
+  <div class="eyebrow"><div class="e-line"></div><div class="e-tag" data-ar="كيف يعمل النظام" data-en="How it works">كيف يعمل النظام</div></div>
+  <h2 data-ar="جاهز للتشغيل خلال 7 أيام عمل" data-en="Live on your website in 7 days">جاهز للتشغيل خلال 7 أيام عمل</h2>
+  <p class="s-desc" data-ar="لا حاجة لفريق تقني. لا متطلبات من جانبكم. نتولى كل شيء من اليوم الأول." data-en="No IT department required. No technical knowledge needed. We handle everything.">لا حاجة لفريق تقني. لا متطلبات من جانبكم. نتولى كل شيء من اليوم الأول.</p>
+  <div class="steps">
     <div class="step">
       <span class="step-n">01</span>
       <div class="step-title" data-ar="ندرس منشأتك" data-en="We study your business">ندرس منشأتك</div>
-      <div class="step-desc" data-ar="نراجع موقعكم الإلكتروني وخدماتكم وملف عملائكم قبل كتابة سطر واحد من الكود. كل نظام يُبنى خصيصاً لمنشأتكم — لا نماذج جاهزة." data-en="We review your website, your services, and your clients before writing a single line of code. Every system is built specifically for you — not a template.">نراجع موقعكم الإلكتروني وخدماتكم وملف عملائكم قبل كتابة سطر واحد من الكود. كل نظام يُبنى خصيصاً لمنشأتكم — لا نماذج جاهزة.</div>
-      <span class="step-tag" data-ar="اليوم 1–2 · الاستكشاف" data-en="Day 1–2 · Discovery">اليوم 1–2 · الاستكشاف</span>
+      <div class="step-desc" data-ar="نراجع موقعكم وخدماتكم وملف عملائكم قبل كتابة سطر واحد من الكود. كل نظام يُبنى خصيصاً لمنشأتكم." data-en="We review your website, services, and clients before writing a single line of code. Every system built specifically for you.">نراجع موقعكم وخدماتكم وملف عملائكم قبل كتابة سطر واحد من الكود. كل نظام يُبنى خصيصاً لمنشأتكم.</div>
+      <span class="step-tag">Day 1–2 · Discovery</span>
     </div>
     <div class="step">
       <span class="step-n">02</span>
       <div class="step-title" data-ar="نبني النظام ونضبطه" data-en="We build and configure">نبني النظام ونضبطه</div>
-      <div class="step-desc" data-ar="يُدرَّب النظام على خدماتكم ويُضبط بلغتكم وأسلوبكم المؤسسي، ثم يُختبر بشكل معمّق — وتراجعونه أنتم قبل الإطلاق." data-en="Your AI system is trained on your services, configured in your language and tone, tested thoroughly — and reviewed by you before anything goes live.">يُدرَّب النظام على خدماتكم ويُضبط بلغتكم وأسلوبكم المؤسسي، ثم يُختبر بشكل معمّق — وتراجعونه أنتم قبل الإطلاق.</div>
-      <span class="step-tag" data-ar="اليوم 3–6 · البناء والمراجعة" data-en="Day 3–6 · Build & review">اليوم 3–6 · البناء والمراجعة</span>
+      <div class="step-desc" data-ar="يُدرَّب النظام على خدماتكم بلغتكم وأسلوبكم، ثم يُختبر معمقاً — وتراجعونه قبل الإطلاق." data-en="Your AI is trained on your services in your language, tested thoroughly, and reviewed by you before going live.">يُدرَّب النظام على خدماتكم بلغتكم وأسلوبكم، ثم يُختبر معمقاً — وتراجعونه قبل الإطلاق.</div>
+      <span class="step-tag">Day 3–6 · Build & review</span>
     </div>
     <div class="step">
       <span class="step-n">03</span>
-      <div class="step-title" data-ar="يعمل النظام من اليوم الأول" data-en="It works from day one">يعمل النظام من اليوم الأول</div>
-      <div class="step-desc" data-ar="من اليوم السابع، يُلتقط كل استفسار من عملائكم ويُؤهَّل ويُسلَّم لفريقكم تلقائياً — وترون النتائج من الأسبوع الأول." data-en="From day 7, every client enquiry is captured, qualified, and delivered to your team automatically. You see results from the first week.">من اليوم السابع، يُلتقط كل استفسار من عملائكم ويُؤهَّل ويُسلَّم لفريقكم تلقائياً — وترون النتائج من الأسبوع الأول.</div>
-      <span class="step-tag" data-ar="اليوم 7 · الإطلاق" data-en="Day 7 · Go live">اليوم 7 · الإطلاق</span>
+      <div class="step-title" data-ar="يعمل من اليوم الأول" data-en="It works from day one">يعمل من اليوم الأول</div>
+      <div class="step-desc" data-ar="من اليوم السابع، يُلتقط كل استفسار ويُؤهَّل ويُسلَّم لفريقكم تلقائياً. نتائج فعلية من الأسبوع الأول." data-en="From day 7, every enquiry is captured, qualified, and delivered to your team automatically. Real results from week one.">من اليوم السابع، يُلتقط كل استفسار ويُؤهَّل ويُسلَّم لفريقكم تلقائياً. نتائج فعلية من الأسبوع الأول.</div>
+      <span class="step-tag">Day 7 · Go live</span>
     </div>
   </div>
 </section>
 
 <!-- STATS BAR -->
 <div class="stats-bar">
-  <div class="sb-inner">
-    <div class="sb-item"><div class="sb-n">24/7</div><div class="sb-l" data-ar="متاح دائماً" data-en="Always online">متاح دائماً</div></div>
-    <div class="sb-div"></div>
-    <div class="sb-item"><div class="sb-n">10</div><div class="sb-l" data-ar="خدمات ذكاء اصطناعي" data-en="AI services">خدمات ذكاء اصطناعي</div></div>
-    <div class="sb-div"></div>
-    <div class="sb-item"><div class="sb-n">7</div><div class="sb-l" data-ar="أيام للتشغيل" data-en="Days to live">أيام للتشغيل</div></div>
-    <div class="sb-div"></div>
-    <div class="sb-item"><div class="sb-n">9×</div><div class="sb-l" data-ar="معدل تحويل أعلى" data-en="More conversions">معدل تحويل أعلى</div></div>
-    <div class="sb-div"></div>
-    <div class="sb-item"><div class="sb-n">SAR 0</div><div class="sb-l" data-ar="تكلفة أجهزة" data-en="Hardware cost">تكلفة أجهزة</div></div>
+  <div class="sb">
+    <div class="sbi"><div class="sbi-n">24/7</div><div class="sbi-l" data-ar="متاح دائماً" data-en="Always online">متاح دائماً</div></div>
+    <div class="sbi"><div class="sbi-n">10</div><div class="sbi-l" data-ar="خدمات ذكاء اصطناعي" data-en="AI services">خدمات ذكاء اصطناعي</div></div>
+    <div class="sbi"><div class="sbi-n">7</div><div class="sbi-l" data-ar="أيام للتشغيل" data-en="Days to live">أيام للتشغيل</div></div>
+    <div class="sbi"><div class="sbi-n">9×</div><div class="sbi-l" data-ar="معدل تحويل أعلى" data-en="More conversions">معدل تحويل أعلى</div></div>
+    <div class="sbi"><div class="sbi-n">SAR 0</div><div class="sbi-l" data-ar="تكلفة أجهزة" data-en="Hardware cost">تكلفة أجهزة</div></div>
   </div>
 </div>
 
 <!-- INDUSTRIES -->
 <section class="industries">
   <div class="ind-hdr">
-    <div class="eyebrow reveal"><div class="e-line"></div><div class="e-tag" data-ar="القطاعات" data-en="Industries">القطاعات</div></div>
-    <h2 class="reveal" data-ar="مصمم لكل محترف سعودي" data-en="Built for every Saudi professional">مصمم لكل محترف سعودي</h2>
+    <div class="eyebrow"><div class="e-line"></div><div class="e-tag" data-ar="القطاعات" data-en="Industries">القطاعات</div></div>
+    <h2 data-ar="مصمم لكل محترف سعودي" data-en="Built for every Saudi professional">مصمم لكل محترف سعودي</h2>
   </div>
   <div class="ind-tabs" id="ind-tabs">
     <button class="ind-tab active" onclick="showInd(0)" data-ar="⚖️ مكاتب المحاماة" data-en="⚖️ Law Firms">⚖️ مكاتب المحاماة</button>
-    <button class="ind-tab" onclick="showInd(1)" data-ar="🏥 العيادات الطبية والأسنان" data-en="🏥 Medical & Dental">🏥 العيادات الطبية والأسنان</button>
+    <button class="ind-tab" onclick="showInd(1)" data-ar="🏥 العيادات الطبية" data-en="🏥 Medical Clinics">🏥 العيادات الطبية</button>
     <button class="ind-tab" onclick="showInd(2)" data-ar="🏢 الوساطة العقارية" data-en="🏢 Real Estate">🏢 الوساطة العقارية</button>
     <button class="ind-tab" onclick="showInd(3)" data-ar="🔧 الهندسة والمقاولات" data-en="🔧 Engineering">🔧 الهندسة والمقاولات</button>
-    <button class="ind-tab" onclick="showInd(4)" data-ar="📊 المحاسبة والاستشارات" data-en="📊 Accounting">📊 المحاسبة والاستشارات</button>
-    <button class="ind-tab" onclick="showInd(5)" data-ar="🏨 الفنادق والضيافة" data-en="🏨 Hotels">🏨 الفنادق والضيافة</button>
+    <button class="ind-tab" onclick="showInd(4)" data-ar="📊 المحاسبة" data-en="📊 Accounting">📊 المحاسبة</button>
+    <button class="ind-tab" onclick="showInd(5)" data-ar="🏨 الفنادق" data-en="🏨 Hotels">🏨 الفنادق</button>
   </div>
   <div class="ind-panels">
-
     <div class="ind-panel active" id="ind-0">
-      <div class="ind-img-wrap"><img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=900&q=80" alt="Law" loading="lazy"><div class="ind-img-fade"></div></div>
+      <div class="ind-img-wrap law">
+        <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=800&q=80&auto=format" alt="Law" loading="lazy" onerror="this.style.display='none'">
+        <div class="ind-img-fade"></div>
+      </div>
       <div class="ind-content">
         <span class="ind-icon-lg">⚖️</span>
         <div class="ind-name" data-ar="مكاتب المحاماة" data-en="Law Firms">مكاتب المحاماة</div>
-        <div class="ind-desc" data-ar="تصل استفسارات العملاء على مدار الساعة من الرياض ولندن ونيويورك. يتولى النظام كل استفسار بالعربية والإنجليزية والفرنسية، مع سجل استقبال متكامل جاهز للمحامي في الساعة التاسعة صباحاً." data-en="Client enquiries arrive around the clock — from Riyadh, London, and New York. Your AI handles every one in Arabic, English, and French, with a complete intake record ready for the attorney at 9am.">تصل استفسارات العملاء على مدار الساعة من الرياض ولندن ونيويورك. يتولى النظام كل استفسار بالعربية والإنجليزية والفرنسية، مع سجل استقبال متكامل جاهز للمحامي في الساعة التاسعة صباحاً.</div>
+        <div class="ind-desc" data-ar="تصل استفسارات العملاء على مدار الساعة من الرياض ولندن ونيويورك. يتولى النظام كل استفسار بالعربية والإنجليزية والفرنسية مع سجل متكامل جاهز للمحامي صباحاً." data-en="Client enquiries arrive around the clock from Riyadh, London, and New York. Your AI handles every one in Arabic, English, and French with a complete record ready for the attorney at 9am.">تصل استفسارات العملاء على مدار الساعة من الرياض ولندن ونيويورك. يتولى النظام كل استفسار بالعربية والإنجليزية والفرنسية مع سجل متكامل جاهز للمحامي صباحاً.</div>
         <div class="ind-pts">
-          <div class="ind-pt"><div class="ipt-line"></div><span data-ar="استقبال متعدد اللغات على مدار الساعة" data-en="24/7 multilingual client intake">استقبال متعدد اللغات على مدار الساعة</span></div>
-          <div class="ind-pt"><div class="ipt-line"></div><span data-ar="توجيه القضايا للفريق المختص تلقائياً" data-en="Practice area routing to the right team">توجيه القضايا للفريق المختص تلقائياً</span></div>
-          <div class="ind-pt"><div class="ipt-line"></div><span data-ar="إنشاء مذكرة الاستقبال القانوني بنقرة واحدة" data-en="One-click legal intake memorandum">إنشاء مذكرة الاستقبال القانوني بنقرة واحدة</span></div>
-          <div class="ind-pt"><div class="ipt-line"></div><span data-ar="تصنيف الحالات العاجلة تلقائياً" data-en="Urgency flagging for same-day matters">تصنيف الحالات العاجلة تلقائياً</span></div>
+          <div class="ind-pt"><div class="ipt-l"></div><span data-ar="استقبال متعدد اللغات 24/7" data-en="24/7 multilingual client intake">استقبال متعدد اللغات 24/7</span></div>
+          <div class="ind-pt"><div class="ipt-l"></div><span data-ar="توجيه للفريق المختص تلقائياً" data-en="Automatic practice area routing">توجيه للفريق المختص تلقائياً</span></div>
+          <div class="ind-pt"><div class="ipt-l"></div><span data-ar="مذكرة استقبال قانونية بنقرة واحدة" data-en="One-click legal intake memorandum">مذكرة استقبال قانونية بنقرة واحدة</span></div>
+          <div class="ind-pt"><div class="ipt-l"></div><span data-ar="تصنيف الحالات العاجلة فوراً" data-en="Instant urgency flagging">تصنيف الحالات العاجلة فوراً</span></div>
         </div>
-        <a href="contact.html" class="ind-cta" data-ar="← طلب عرض لمكتبكم" data-en="Get a proposal for your firm →">← طلب عرض لمكتبكم</a>
+        <a href="contact.html" class="ind-cta" data-ar="← طلب عرض لمكتبكم" data-en="Get a proposal →">← طلب عرض لمكتبكم</a>
       </div>
     </div>
-
     <div class="ind-panel" id="ind-1">
-      <div class="ind-img-wrap"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=900&q=80" alt="Medical" loading="lazy"><div class="ind-img-fade"></div></div>
+      <div class="ind-img-wrap med">
+        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80&auto=format" alt="Medical" loading="lazy" onerror="this.style.display='none'">
+        <div class="ind-img-fade"></div>
+      </div>
       <div class="ind-content">
         <span class="ind-icon-lg">🏥</span>
         <div class="ind-name" data-ar="العيادات الطبية وعيادات الأسنان" data-en="Medical & Dental Clinics">العيادات الطبية وعيادات الأسنان</div>
-        <div class="ind-desc" data-ar="يتصل المرضى في الحادية عشرة مساءً ويبحثون يوم الجمعة ويحجزون في عطلة نهاية الأسبوع. يحجز النظام المواعيد فوراً ويجيب على أسئلة التأمين ويُقلل من حالات التغيب بتذكيرات آلية." data-en="Patients call at 11pm, search on Fridays, and book on weekends. Your AI books appointments instantly, answers insurance questions, and reduces no-shows with automated reminders.">يتصل المرضى في الحادية عشرة مساءً ويبحثون يوم الجمعة ويحجزون في عطلة نهاية الأسبوع. يحجز النظام المواعيد فوراً ويجيب على أسئلة التأمين ويُقلل من حالات التغيب بتذكيرات آلية.</div>
+        <div class="ind-desc" data-ar="يتصل المرضى في الحادية عشرة مساءً ويبحثون يوم الجمعة. يحجز النظام المواعيد فوراً ويجيب على أسئلة التأمين ويقلل التغيب بتذكيرات آلية." data-en="Patients call at 11pm and search on Fridays. Your AI books appointments instantly, answers insurance questions, and reduces no-shows with automated reminders.">يتصل المرضى في الحادية عشرة مساءً ويبحثون يوم الجمعة. يحجز النظام المواعيد فوراً ويجيب على أسئلة التأمين ويقلل التغيب بتذكيرات آلية.</div>
         <div class="ind-pts">
-          <div class="ind-pt"><div class="ipt-line"></div><span data-ar="حجز المواعيد على مدار الساعة بالعربية" data-en="Appointment booking 24/7 in Arabic">حجز المواعيد على مدار الساعة بالعربية</span></div>
-          <div class="ind-pt"><div class="ipt-line"></div><span data-ar="الفرز الأولي للمريض قبل الزيارة" data-en="Patient pre-screening before visits">الفرز الأولي للمريض قبل الزيارة</span></div>
-          <div class="ind-pt"><div class="ipt-line"></div><span data-ar="تذكيرات آلية للحد من التغيب" data-en="Automated no-show reminders">تذكيرات آلية للحد من التغيب</span></div>
-          <div class="ind-pt"><div class="ipt-line"></div><span data-ar="الإجابة على أسئلة التأمين والأسعار" data-en="Insurance and pricing FAQ handling">الإجابة على أسئلة التأمين والأسعار</span></div>
+          <div class="ind-pt"><div class="ipt-l"></div><span data-ar="حجز المواعيد 24/7 بالعربية" data-en="Appointment booking 24/7 in Arabic">حجز المواعيد 24/7 بالعربية</span></div>
+          <div class="ind-pt"><div class="ipt-l"></div><span data-ar="فرز المريض قبل الزيارة" data-en="Patient pre-screening">فرز المريض قبل الزيارة</span></div>
+          <div class="ind-pt"><div class="ipt-l"></div><span data-ar="تذكيرات آلية لتقليل التغيب" data-en="Automated no-show reminders">تذكيرات آلية لتقليل التغيب</span></div>
+          <div class="ind-pt"><div class="ipt-l"></div><span data-ar="أسئلة التأمين والأسعار" data-en="Insurance and pricing FAQ">أسئلة التأمين والأسعار</span></div>
         </div>
-        <a href="contact.html" class="ind-cta" data-ar="← طلب عرض لعيادتكم" data-en="Get a proposal for your clinic →">← طلب عرض لعيادتكم</a>
+        <a href="contact.html" class="ind-cta" data-ar="← طلب عرض لعيادتكم" data-en="Get a proposal →">← طلب عرض لعيادتكم</a>
       </div>
     </div>
-
     <div class="ind-panel" id="ind-2">
-      <div class="ind-img-wrap"><img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=900&q=80" alt="Real estate" loading="lazy"><div class="ind-img-fade"></div></div>
+      <div class="ind-img-wrap re">
+        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80&auto=format" alt="Real estate" loading="lazy" onerror="this.style.display='none'">
+        <div class="ind-img-fade"></div>
+      </div>
       <div class="ind-content">
         <span class="ind-icon-lg">🏢</span>
         <div class="ind-name" data-ar="شركات الوساطة العقارية" data-en="Real Estate Agencies">شركات الوساطة العقارية</div>
-        <div class="ind-desc" data-ar="يتصفح المشترون القوائم في منتصف الليل ويتوقعون استجابة فورية. يُؤهِّل النظام الميزانية والموقع والجدول الزمني قبل أن يستيقظ وكلاؤكم، ويُسلِّم قائمة عملاء مرتبة كل صباح." data-en="Buyers browse listings at midnight and expect an immediate response. Your AI qualifies budget, location, and timeline before your agents wake up — delivering a ranked lead list every morning.">يتصفح المشترون القوائم في منتصف الليل ويتوقعون استجابة فورية. يُؤهِّل النظام الميزانية والموقع والجدول الزمني قبل أن يستيقظ وكلاؤكم، ويُسلِّم قائمة عملاء مرتبة كل صباح.</div>
+        <div class="ind-desc" data-ar="يتصفح المشترون القوائم في منتصف الليل. يؤهل النظام الميزانية والموقع والجدول الزمني قبل أن يستيقظ وكلاؤكم ويسلم قائمة عملاء مرتبة كل صباح." data-en="Buyers browse listings at midnight. Your AI qualifies budget, location, and timeline before your agents wake up, delivering a ranked lead list every morning.">يتصفح المشترون القوائم في منتصف الليل. يؤهل النظام الميزانية والموقع والجدول الزمني قبل أن يستيقظ وكلاؤكم ويسلم قائمة عملاء مرتبة كل صباح.</div>
         <div class="ind-pts">
-          <div class="ind-pt"><div class="ipt-line"></div><span data-ar="تأهيل العملاء المحتملين قبل تدخل الوكيل" data-en="Lead qualification before agent involvement">تأهيل العملاء المحتملين قبل تدخل الوكيل</span></div>
-          <div class="ind-pt"><div class="ipt-line"></div><span data-ar="جمع بيانات الميزانية والموقع والجدول الزمني" data-en="Budget, location, and timeline capture">جمع بيانات الميزانية والموقع والجدول الزمني</span></div>
-          <div class="ind-pt"><div class="ipt-line"></div><span data-ar="خدمة المشترين الدوليين بالإنجليزية" data-en="International buyer support in English">خدمة المشترين الدوليين بالإنجليزية</span></div>
-          <div class="ind-pt"><div class="ipt-line"></div><span data-ar="تقرير يومي بترتيب العملاء حسب الأولوية" data-en="Daily ranked lead report">تقرير يومي بترتيب العملاء حسب الأولوية</span></div>
+          <div class="ind-pt"><div class="ipt-l"></div><span data-ar="تأهيل العملاء قبل تدخل الوكيل" data-en="Lead qualification before agent">تأهيل العملاء قبل تدخل الوكيل</span></div>
+          <div class="ind-pt"><div class="ipt-l"></div><span data-ar="جمع الميزانية والموقع والجدول" data-en="Budget, location, timeline capture">جمع الميزانية والموقع والجدول</span></div>
+          <div class="ind-pt"><div class="ipt-l"></div><span data-ar="خدمة المشترين الدوليين بالإنجليزية" data-en="International buyer support">خدمة المشترين الدوليين بالإنجليزية</span></div>
+          <div class="ind-pt"><div class="ipt-l"></div><span data-ar="تقرير يومي بترتيب الأولويات" data-en="Daily ranked lead report">تقرير يومي بترتيب الأولويات</span></div>
         </div>
-        <a href="contact.html" class="ind-cta" data-ar="← طلب عرض لشركتكم" data-en="Get a proposal for your agency →">← طلب عرض لشركتكم</a>
+        <a href="contact.html" class="ind-cta" data-ar="← طلب عرض لشركتكم" data-en="Get a proposal →">← طلب عرض لشركتكم</a>
       </div>
     </div>
-
     <div class="ind-panel" id="ind-3">
-      <div class="ind-img-wrap"><img src="https://images.unsplash.com/photo-1581093458791-9d15482442f6?w=900&q=80" alt="Engineering" loading="lazy"><div class="ind-img-fade"></div></div>
+      <div class="ind-img-wrap eng">
+        <img src="https://images.unsplash.com/photo-1581093458791-9d15482442f6?w=800&q=80&auto=format" alt="Engineering" loading="lazy" onerror="this.style.display='none'">
+        <div class="ind-img-fade"></div>
+      </div>
       <div class="ind-content">
         <span class="ind-icon-lg">🔧</span>
         <div class="ind-name" data-ar="شركات الهندسة والمقاولات" data-en="Engineering & Contracting">شركات الهندسة والمقاولات</div>
-        <div class="ind-desc" data-ar="تصل استفسارات المشاريع من الجهات الحكومية والمطورين والمشغلين الدوليين. يلتقط النظام النطاق والميزانية والموقع والجدول الزمني — ويُسلِّم ملخصاً هيكلياً لفريق تطوير الأعمال فوراً." data-en="Project enquiries arrive from government entities, developers, and international operators. Your AI captures scope, budget, location, and timeline — delivering a structured brief to your BD team instantly.">تصل استفسارات المشاريع من الجهات الحكومية والمطورين والمشغلين الدوليين. يلتقط النظام النطاق والميزانية والموقع والجدول الزمني — ويُسلِّم ملخصاً هيكلياً لفريق تطوير الأعمال فوراً.</div>
+        <div class="ind-desc" data-ar="استفسارات المشاريع من الجهات الحكومية والمطورين. يلتقط النظام النطاق والميزانية والجدول ويسلم ملخصاً هيكلياً لفريق تطوير الأعمال فوراً." data-en="Project enquiries from government entities and developers. Your AI captures scope, budget, and timeline, delivering a structured brief to your BD team instantly.">استفسارات المشاريع من الجهات الحكومية والمطورين. يلتقط النظام النطاق والميزانية والجدول ويسلم ملخصاً هيكلياً لفريق تطوير الأعمال فوراً.</div>
         <div class="ind-pts">
-          <div class="ind-pt"><div class="ipt-line"></div><span data-ar="جمع بيانات المشروع والميزانية والنطاق" data-en="Project scope and budget capture">جمع بيانات المشروع والميزانية والنطاق</span></div>
-          <div class="ind-pt"><div class="ipt-line"></div><span data-ar="التعامل مع الجهات الحكومية والشركات الكبرى" data-en="Government and corporate client handling">التعامل مع الجهات الحكومية والشركات الكبرى</span></div>
-          <div class="ind-pt"><div class="ipt-line"></div><span data-ar="معالجة الاستفسارات بالعربية والإنجليزية" data-en="Arabic and English project enquiries">معالجة الاستفسارات بالعربية والإنجليزية</span></div>
-          <div class="ind-pt"><div class="ipt-line"></div><span data-ar="إشعار فريق تطوير الأعمال تلقائياً" data-en="Automatic BD team notification">إشعار فريق تطوير الأعمال تلقائياً</span></div>
+          <div class="ind-pt"><div class="ipt-l"></div><span data-ar="جمع بيانات المشروع والميزانية" data-en="Project scope and budget capture">جمع بيانات المشروع والميزانية</span></div>
+          <div class="ind-pt"><div class="ipt-l"></div><span data-ar="التعامل مع الجهات الحكومية" data-en="Government client handling">التعامل مع الجهات الحكومية</span></div>
+          <div class="ind-pt"><div class="ipt-l"></div><span data-ar="العربية والإنجليزية" data-en="Arabic and English support">العربية والإنجليزية</span></div>
+          <div class="ind-pt"><div class="ipt-l"></div><span data-ar="إشعار فريق BD تلقائياً" data-en="Automatic BD team notification">إشعار فريق BD تلقائياً</span></div>
         </div>
-        <a href="contact.html" class="ind-cta" data-ar="← طلب عرض لشركتكم" data-en="Get a proposal for your firm →">← طلب عرض لشركتكم</a>
+        <a href="contact.html" class="ind-cta" data-ar="← طلب عرض لشركتكم" data-en="Get a proposal →">← طلب عرض لشركتكم</a>
       </div>
     </div>
-
     <div class="ind-panel" id="ind-4">
-      <div class="ind-img-wrap"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=900&q=80" alt="Accounting" loading="lazy"><div class="ind-img-fade"></div></div>
+      <div class="ind-img-wrap acc">
+        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80&auto=format" alt="Accounting" loading="lazy" onerror="this.style.display='none'">
+        <div class="ind-img-fade"></div>
+      </div>
       <div class="ind-content">
         <span class="ind-icon-lg">📊</span>
-        <div class="ind-name" data-ar="مكاتب المحاسبة والاستشارات المالية" data-en="Accounting & Advisory">مكاتب المحاسبة والاستشارات المالية</div>
-        <div class="ind-desc" data-ar="مواعيد ضريبة القيمة المضافة وموسم التدقيق وإقرارات الزكاة — عملاؤكم لديهم أسئلة عاجلة في أصعب الأوقات. يتولى النظام الاستفسارات الروتينية ويجدول الاستشارات ويضمن عدم ضياع أي طلب." data-en="VAT deadlines, audit season, Zakat filings — your clients have urgent questions at the worst times. Your AI handles routine queries, books consultations, and ensures not a single enquiry slips through.">مواعيد ضريبة القيمة المضافة وموسم التدقيق وإقرارات الزكاة — عملاؤكم لديهم أسئلة عاجلة في أصعب الأوقات. يتولى النظام الاستفسارات الروتينية ويجدول الاستشارات ويضمن عدم ضياع أي طلب.</div>
+        <div class="ind-name" data-ar="مكاتب المحاسبة والاستشارات" data-en="Accounting & Advisory">مكاتب المحاسبة والاستشارات</div>
+        <div class="ind-desc" data-ar="مواعيد ضريبة القيمة المضافة وإقرارات الزكاة — عملاؤكم لديهم أسئلة عاجلة. يتولى النظام الاستفسارات الروتينية ويجدول الاستشارات تلقائياً." data-en="VAT deadlines and Zakat filings — your clients have urgent questions. Your AI handles routine queries and books consultations automatically.">مواعيد ضريبة القيمة المضافة وإقرارات الزكاة — عملاؤكم لديهم أسئلة عاجلة. يتولى النظام الاستفسارات الروتينية ويجدول الاستشارات تلقائياً.</div>
         <div class="ind-pts">
-          <div class="ind-pt"><div class="ipt-line"></div><span data-ar="استقبال استفسارات الضرائب والتدقيق" data-en="Tax and audit enquiry intake">استقبال استفسارات الضرائب والتدقيق</span></div>
-          <div class="ind-pt"><div class="ipt-line"></div><span data-ar="الإجابة على استفسارات هيئة الزكاة والضريبة والجمارك" data-en="ZATCA and Zakat query handling">الإجابة على استفسارات هيئة الزكاة والضريبة والجمارك</span></div>
-          <div class="ind-pt"><div class="ipt-line"></div><span data-ar="جدولة الاستشارات تلقائياً" data-en="Consultation scheduling">جدولة الاستشارات تلقائياً</span></div>
-          <div class="ind-pt"><div class="ipt-line"></div><span data-ar="جمع وثائق تأهيل العملاء الجدد" data-en="Client onboarding document collection">جمع وثائق تأهيل العملاء الجدد</span></div>
+          <div class="ind-pt"><div class="ipt-l"></div><span data-ar="استفسارات الضرائب والتدقيق" data-en="Tax and audit enquiries">استفسارات الضرائب والتدقيق</span></div>
+          <div class="ind-pt"><div class="ipt-l"></div><span data-ar="استفسارات هيئة الزكاة والضريبة" data-en="ZATCA and Zakat queries">استفسارات هيئة الزكاة والضريبة</span></div>
+          <div class="ind-pt"><div class="ipt-l"></div><span data-ar="جدولة الاستشارات تلقائياً" data-en="Consultation scheduling">جدولة الاستشارات تلقائياً</span></div>
+          <div class="ind-pt"><div class="ipt-l"></div><span data-ar="جمع وثائق تأهيل العملاء" data-en="Client onboarding documents">جمع وثائق تأهيل العملاء</span></div>
         </div>
-        <a href="contact.html" class="ind-cta" data-ar="← طلب عرض لمكتبكم" data-en="Get a proposal for your firm →">← طلب عرض لمكتبكم</a>
+        <a href="contact.html" class="ind-cta" data-ar="← طلب عرض لمكتبكم" data-en="Get a proposal →">← طلب عرض لمكتبكم</a>
       </div>
     </div>
-
     <div class="ind-panel" id="ind-5">
-      <div class="ind-img-wrap"><img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=900&q=80" alt="Hotel" loading="lazy"><div class="ind-img-fade"></div></div>
+      <div class="ind-img-wrap hot">
+        <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&q=80&auto=format" alt="Hotel" loading="lazy" onerror="this.style.display='none'">
+        <div class="ind-img-fade"></div>
+      </div>
       <div class="ind-content">
         <span class="ind-icon-lg">🏨</span>
         <div class="ind-name" data-ar="الفنادق وقطاع الضيافة" data-en="Hotels & Hospitality">الفنادق وقطاع الضيافة</div>
-        <div class="ind-desc" data-ar="يريد الضيوف إجابات فورية — التوفر والأسعار والمرافق والفعاليات. يتولى النظام كل استفسار بالعربية والإنجليزية ويحجز الغرف ويُحيل الطلبات المعقدة لفريقكم بسلاسة." data-en="Guests want answers immediately — availability, pricing, amenities, events. Your AI handles every enquiry in Arabic and English, books reservations, and hands off complex requests to your team seamlessly.">يريد الضيوف إجابات فورية — التوفر والأسعار والمرافق والفعاليات. يتولى النظام كل استفسار بالعربية والإنجليزية ويحجز الغرف ويُحيل الطلبات المعقدة لفريقكم بسلاسة.</div>
+        <div class="ind-desc" data-ar="الضيوف يريدون إجابات فورية حول التوفر والأسعار. يتولى النظام كل استفسار بالعربية والإنجليزية ويحجز الغرف ويحيل الطلبات لفريقكم بسلاسة." data-en="Guests want immediate answers about availability and pricing. Your AI handles every enquiry in Arabic and English, books reservations, and routes complex requests seamlessly.">الضيوف يريدون إجابات فورية حول التوفر والأسعار. يتولى النظام كل استفسار بالعربية والإنجليزية ويحجز الغرف ويحيل الطلبات لفريقكم بسلاسة.</div>
         <div class="ind-pts">
-          <div class="ind-pt"><div class="ipt-line"></div><span data-ar="الإجابة على استفسارات التوفر والأسعار" data-en="Room availability and booking queries">الإجابة على استفسارات التوفر والأسعار</span></div>
-          <div class="ind-pt"><div class="ipt-line"></div><span data-ar="استقبال حجوزات الفعاليات والمجموعات" data-en="Event and group booking intake">استقبال حجوزات الفعاليات والمجموعات</span></div>
-          <div class="ind-pt"><div class="ipt-line"></div><span data-ar="تواصل متعدد اللغات مع الضيوف" data-en="Multilingual guest communication">تواصل متعدد اللغات مع الضيوف</span></div>
-          <div class="ind-pt"><div class="ipt-line"></div><span data-ar="متابعة رضا الضيوف آلياً" data-en="Guest satisfaction follow-up">متابعة رضا الضيوف آلياً</span></div>
+          <div class="ind-pt"><div class="ipt-l"></div><span data-ar="استفسارات التوفر والحجز" data-en="Availability and booking queries">استفسارات التوفر والحجز</span></div>
+          <div class="ind-pt"><div class="ipt-l"></div><span data-ar="حجوزات الفعاليات والمجموعات" data-en="Event and group bookings">حجوزات الفعاليات والمجموعات</span></div>
+          <div class="ind-pt"><div class="ipt-l"></div><span data-ar="تواصل متعدد اللغات مع الضيوف" data-en="Multilingual guest communication">تواصل متعدد اللغات مع الضيوف</span></div>
+          <div class="ind-pt"><div class="ipt-l"></div><span data-ar="متابعة رضا الضيوف آلياً" data-en="Guest satisfaction follow-up">متابعة رضا الضيوف آلياً</span></div>
         </div>
-        <a href="contact.html" class="ind-cta" data-ar="← طلب عرض لمنشأتكم" data-en="Get a proposal for your property →">← طلب عرض لمنشأتكم</a>
+        <a href="contact.html" class="ind-cta" data-ar="← طلب عرض لمنشأتكم" data-en="Get a proposal →">← طلب عرض لمنشأتكم</a>
       </div>
     </div>
-
   </div>
-  <div class="ind-controls">
-    <button class="i-arrow" onclick="indPrev()">&#8594;</button>
-    <button class="i-arrow" onclick="indNext()">&#8592;</button>
+  <div class="ind-nav">
+    <button class="i-arr" id="arr-prev" onclick="indPrev()">&#8594;</button>
+    <button class="i-arr" id="arr-next" onclick="indNext()">&#8592;</button>
     <div class="i-dots" id="i-dots"></div>
-    <span class="i-count" id="i-count">1 / 6</span>
+    <span class="i-cnt" id="i-cnt">1 / 6</span>
   </div>
 </section>
 
-<!-- CHATBOT -->
-<section class="chat-section">
-  <div class="eyebrow reveal"><div class="e-line"></div><div class="e-tag" data-ar="تواصل معنا" data-en="Talk to us">تواصل معنا</div></div>
-  <h2 class="reveal" data-ar="جرّب النظام الآن" data-en="Experience it right now">جرّب النظام الآن</h2>
-  <div class="chat-layout">
-    <div class="reveal">
-      <p style="font-size:14px;color:rgba(255,255,255,.4);line-height:2;font-weight:300;max-width:400px;margin-bottom:8px" data-ar="هذا نظامنا بالذكاء الاصطناعي — نفس التقنية التي نبنيها لعملائنا. أخبرنا عن منشأتكم وسنُعدّ لكم عرضاً مخصصاً خلال 24 ساعة." data-en="This is our own AI system — the same technology we build for our clients. Tell us about your business and we will prepare a tailored proposal within 24 hours.">هذا نظامنا بالذكاء الاصطناعي — نفس التقنية التي نبنيها لعملائنا. أخبرنا عن منشأتكم وسنُعدّ لكم عرضاً مخصصاً خلال 24 ساعة.</p>
-      <div class="chat-feats">
-        <div class="cf"><div class="cf-n">I</div><div><div class="cf-title" data-ar="يرد فوراً بالعربية أو الإنجليزية" data-en="Responds instantly in Arabic or English">يرد فوراً بالعربية أو الإنجليزية</div><div class="cf-desc" data-ar="اكتب بأي لغة — يكتشفها تلقائياً ويرد بها." data-en="Write in either language — it detects and responds automatically.">اكتب بأي لغة — يكتشفها تلقائياً ويرد بها.</div></div></div>
-        <div class="cf"><div class="cf-n">II</div><div><div class="cf-title" data-ar="نتلقى ملخصاً شاملاً مع خطة عمل" data-en="We receive a complete briefing">نتلقى ملخصاً شاملاً مع خطة عمل</div><div class="cf-desc" data-ar="عند انتهاء المحادثة يصلنا ملخص كامل بتوصيات مخصصة لمنشأتكم." data-en="A structured summary with a recommended action plan arrives in our inbox when you finish.">عند انتهاء المحادثة يصلنا ملخص كامل بتوصيات مخصصة لمنشأتكم.</div></div></div>
-        <div class="cf"><div class="cf-n">III</div><div><div class="cf-title" data-ar="عرض أسعار خلال 24 ساعة" data-en="Proposal within 24 hours">عرض أسعار خلال 24 ساعة</div><div class="cf-desc" data-ar="بناءً على ما تشاركونه، نُعدّ عرضاً مخصصاً بأسعار دقيقة لمنشأتكم." data-en="Based on what you share, we prepare a tailored proposal with exact pricing for your business.">بناءً على ما تشاركونه، نُعدّ عرضاً مخصصاً بأسعار دقيقة لمنشأتكم.</div></div></div>
+<!-- SERVICES PREVIEW -->
+<section class="svcs">
+  <div class="eyebrow"><div class="e-line"></div><div class="e-tag" data-ar="خدماتنا" data-en="Our services">خدماتنا</div></div>
+  <h2 data-ar="10 طرق يستبدل بها الذكاء الاصطناعي التكاليف المرتفعة" data-en="10 ways AI replaces expensive overhead">10 طرق يستبدل بها الذكاء الاصطناعي التكاليف المرتفعة</h2>
+  <div class="svcs-grid">
+    <div class="svc"><span class="svc-icon">💬</span><div class="svc-name" data-ar="روبوت استقبال العملاء" data-en="AI Intake Chatbot">روبوت استقبال العملاء</div><div class="svc-replaces" data-ar="يستبدل: موظف الاستقبال" data-en="Replaces: Intake coordinator">يستبدل: موظف الاستقبال</div><div class="svc-price">SAR 1,875 <span class="svc-mo">setup · SAR 562/mo</span></div></div>
+    <div class="svc"><span class="svc-icon">📞</span><div class="svc-name" data-ar="المستقبل الصوتي الذكي" data-en="AI Voice Receptionist">المستقبل الصوتي الذكي</div><div class="svc-replaces" data-ar="يستبدل: موظف الاستقبال" data-en="Replaces: Front desk receptionist">يستبدل: موظف الاستقبال</div><div class="svc-price">SAR 3,000 <span class="svc-mo">setup · SAR 750/mo</span></div></div>
+    <div class="svc"><span class="svc-icon">🎯</span><div class="svc-name" data-ar="مؤهل العملاء المحتملين" data-en="AI Lead Qualifier">مؤهل العملاء المحتملين</div><div class="svc-replaces" data-ar="يستبدل: موظف المبيعات" data-en="Replaces: Junior salesperson">يستبدل: موظف المبيعات</div><div class="svc-price">SAR 1,500 <span class="svc-mo">setup · SAR 562/mo</span></div></div>
+    <div class="svc"><span class="svc-icon">🛎️</span><div class="svc-name" data-ar="وكيل خدمة العملاء" data-en="AI Customer Support">وكيل خدمة العملاء</div><div class="svc-replaces" data-ar="يستبدل: فريق الدعم" data-en="Replaces: Support staff">يستبدل: فريق الدعم</div><div class="svc-price">SAR 1,312 <span class="svc-mo">setup · SAR 562/mo</span></div></div>
+    <div class="svc"><span class="svc-icon">📄</span><div class="svc-name" data-ar="معالج الوثائق الذكي" data-en="AI Document Processor">معالج الوثائق الذكي</div><div class="svc-replaces" data-ar="يستبدل: موظف إدخال البيانات" data-en="Replaces: Data entry clerk">يستبدل: موظف إدخال البيانات</div><div class="svc-price">SAR 1,500 <span class="svc-mo">setup · SAR 562/mo</span></div></div>
+    <div class="svc"><span class="svc-icon">💰</span><div class="svc-name" data-ar="نظام تذكير الدفع" data-en="AI Payment Reminders">نظام تذكير الدفع</div><div class="svc-replaces" data-ar="يستبدل: مكالمات التحصيل" data-en="Replaces: Collection calls">يستبدل: مكالمات التحصيل</div><div class="svc-price">SAR 750 <span class="svc-mo">setup · SAR 375/mo</span></div></div>
+    <div class="svc"><span class="svc-icon">🧑‍💼</span><div class="svc-name" data-ar="محكم التوظيف الذكي" data-en="AI HR Screener">محكم التوظيف الذكي</div><div class="svc-replaces" data-ar="يستبدل: منسق التوظيف" data-en="Replaces: HR coordinator">يستبدل: منسق التوظيف</div><div class="svc-price">SAR 1,125 <span class="svc-mo">setup · SAR 450/mo</span></div></div>
+    <div class="svc"><span class="svc-icon">📊</span><div class="svc-name" data-ar="تقرير استخبارات السوق" data-en="Market Intelligence">تقرير استخبارات السوق</div><div class="svc-replaces" data-ar="يستبدل: محلل السوق" data-en="Replaces: Market analyst">يستبدل: محلل السوق</div><div class="svc-price">SAR 1,125 <span class="svc-mo">setup · SAR 750/mo</span></div></div>
+    <div class="svc"><span class="svc-icon">📢</span><div class="svc-name" data-ar="حملات واتساب" data-en="WhatsApp Campaigns">حملات واتساب</div><div class="svc-replaces" data-ar="يستبدل: منسق التسويق" data-en="Replaces: Marketing coordinator">يستبدل: منسق التسويق</div><div class="svc-price">SAR 937 <span class="svc-mo">/ campaign · SAR 750/mo</span></div></div>
+    <div class="svc"><span class="svc-icon">🤖</span><div class="svc-name" data-ar="المساعد الشخصي الذكي" data-en="AI Personal Assistant">المساعد الشخصي الذكي</div><div class="svc-replaces" data-ar="يستبدل: المساعد التنفيذي" data-en="Replaces: Executive PA">يستبدل: المساعد التنفيذي</div><div class="svc-price">SAR 1,500 <span class="svc-mo">setup · SAR 562/mo</span></div></div>
+  </div>
+  <div style="text-align:center;margin-top:28px">
+    <a href="services.html" class="btn-gold" data-ar="عرض جميع الخدمات بالتفصيل" data-en="View all services in detail">عرض جميع الخدمات بالتفصيل</a>
+  </div>
+</section>
+
+<!-- CTA + CONTACT -->
+<section class="cta-section">
+  <div class="eyebrow"><div class="e-line"></div><div class="e-tag" data-ar="ابدأ الآن" data-en="Get started">ابدأ الآن</div></div>
+  <div class="cta-inner">
+    <div class="cta-text">
+      <h2 data-ar="أخبرنا عن منشأتكم.<br>نتولى الباقي." data-en="Tell us about your business.<br>We'll handle the rest.">أخبرنا عن منشأتكم.<br>نتولى الباقي.</h2>
+      <p class="s-desc" style="margin-top:12px" data-ar="عرض مخصص خلال 24 ساعة. نظامكم جاهز خلال 7 أيام عمل. 50% عند التوقيع فقط." data-en="Tailored proposal within 24 hours. Your system live within 7 business days. 50% on signature only.">عرض مخصص خلال 24 ساعة. نظامكم جاهز خلال 7 أيام عمل. 50% عند التوقيع فقط.</p>
+      <div class="cta-steps">
+        <div class="cta-step"><div class="cta-num">1</div><div><div class="cta-st" data-ar="تملؤون النموذج" data-en="You fill the form">تملؤون النموذج</div><div class="cta-sd" data-ar="يستغرق 3 دقائق" data-en="Takes 3 minutes">يستغرق 3 دقائق</div></div></div>
+        <div class="cta-step"><div class="cta-num">2</div><div><div class="cta-st" data-ar="نرسل عرضاً مخصصاً خلال 24 ساعة" data-en="We send a tailored proposal in 24hrs">نرسل عرضاً مخصصاً خلال 24 ساعة</div><div class="cta-sd" data-ar="بأسعار دقيقة لمنشأتكم" data-en="With exact pricing for your business">بأسعار دقيقة لمنشأتكم</div></div></div>
+        <div class="cta-step"><div class="cta-num">3</div><div><div class="cta-st" data-ar="توقعون ونبني — جاهز في 7 أيام" data-en="You sign, we build — live in 7 days">توقعون ونبني — جاهز في 7 أيام</div><div class="cta-sd" data-ar="50% عند التوقيع · 50% عند الإطلاق" data-en="50% on signature · 50% on go-live">50% عند التوقيع · 50% عند الإطلاق</div></div></div>
       </div>
     </div>
-    <div class="reveal rd2">
-      <div class="cw">
-        <div class="cw-hdr">
-          <div class="cw-av">IA</div>
-          <div>
-            <div class="cw-nm" data-ar="IA AI Solutions · مساعد الأعمال" data-en="IA AI Solutions · Business Assistant">IA AI Solutions · مساعد الأعمال</div>
-            <div class="cw-st" data-ar="متصل · جاهز للمساعدة" data-en="Online · ready to help">متصل · جاهز للمساعدة</div>
-          </div>
+    <div>
+      <div class="cta-card">
+        <div class="cta-card-title" data-ar="تواصلوا معنا" data-en="Get in touch">تواصلوا معنا</div>
+        <div class="cta-card-sub" data-ar="نرد خلال 24 ساعة — عادةً أسرع. لا بريد مزعج، لا التزام." data-en="We respond within 24 hours — usually faster. No spam, no obligation.">نرد خلال 24 ساعة — عادةً أسرع. لا بريد مزعج، لا التزام.</div>
+        <div class="cta-info">
+          <div class="ci-row"><span class="ci-icon">✉</span><a href="mailto:hello@ia-aisolutions.com">hello@ia-aisolutions.com</a></div>
+          <div class="ci-row"><span class="ci-icon">📱</span><span data-ar="واتساب متاح عند الطلب" data-en="WhatsApp available on request">واتساب متاح عند الطلب</span></div>
+          <div class="ci-row"><span class="ci-icon">🇸🇦</span><span data-ar="المملكة العربية السعودية · دول الخليج" data-en="Saudi Arabia · GCC">المملكة العربية السعودية · دول الخليج</span></div>
         </div>
-        <div class="cw-msgs" id="ia-msgs"></div>
-        <div class="cw-ftr">
-          <div class="cw-row">
-            <textarea class="cw-inp" id="ia-inp" rows="1" onkeydown="iaKey(event)" oninput="iaResize(this)"></textarea>
-            <button class="cw-send" id="ia-send" onclick="iaSend()"><svg width="11" height="11" fill="none" stroke="#000" stroke-width="2.5" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
-          </div>
-          <div class="cw-note">IA AI Solutions · ia-aisolutions.com</div>
-        </div>
+        <a href="contact.html" class="cta-btn" data-ar="طلب عرض أسعار مخصص" data-en="Request a tailored proposal">طلب عرض أسعار مخصص</a>
+        <a href="demo.html" class="cta-btn-ghost" data-ar="جرّب العرض المباشر أولاً" data-en="Try the live demo first">جرّب العرض المباشر أولاً</a>
+        <div class="cta-note">No commitment · Response within 24 hours</div>
       </div>
     </div>
   </div>
@@ -576,32 +630,30 @@ footer{background:#050505;padding:52px 6% 28px;border-top:1px solid rgba(255,255
 <footer>
   <div class="ft-grid">
     <div>
-      <a href="index.html" class="f-logo"><div class="f-mark">IA</div><div class="f-brand"><span>IA</span> AI Solutions</div></a>
-      <p class="f-desc" data-ar="أنظمة أتمتة أعمال مدعومة بالذكاء الاصطناعي للخدمات المهنية السعودية. العربية أولاً، واتساب في المقدمة، جاهز خلال 7 أيام." data-en="AI-powered business automation for Saudi professional services. Arabic-first, WhatsApp-native, live in 7 days.">أنظمة أتمتة أعمال مدعومة بالذكاء الاصطناعي للخدمات المهنية السعودية. العربية أولاً، واتساب في المقدمة، جاهز خلال 7 أيام.</p>
-      <div class="f-info"><a href="mailto:hello@ia-aisolutions.com">hello@ia-aisolutions.com</a></div>
-      <div class="f-info" data-ar="المملكة العربية السعودية · دول الخليج العربي" data-en="Kingdom of Saudi Arabia · GCC">المملكة العربية السعودية · دول الخليج العربي</div>
+      <a href="index.html" class="f-logo"><div class="f-mk">IA</div><div class="f-bn"><span>IA</span> AI Solutions</div></a>
+      <p class="f-desc" data-ar="أنظمة أتمتة أعمال بالذكاء الاصطناعي للخدمات المهنية السعودية. العربية أولاً، جاهز خلال 7 أيام." data-en="AI-powered business automation for Saudi professional services. Arabic-first, live in 7 days.">أنظمة أتمتة أعمال بالذكاء الاصطناعي للخدمات المهنية السعودية. العربية أولاً، جاهز خلال 7 أيام.</p>
+      <div class="f-contact"><a href="mailto:hello@ia-aisolutions.com">hello@ia-aisolutions.com</a></div>
+      <div class="f-contact" data-ar="المملكة العربية السعودية · دول الخليج العربي" data-en="Kingdom of Saudi Arabia · GCC">المملكة العربية السعودية · دول الخليج العربي</div>
     </div>
     <div>
-      <div class="f-col-t" data-ar="الخدمات" data-en="Services">الخدمات</div>
+      <div class="f-ct" data-ar="الخدمات" data-en="Services">الخدمات</div>
       <a href="services.html" class="f-lnk" data-ar="روبوت استقبال العملاء" data-en="AI Intake Chatbot">روبوت استقبال العملاء</a>
-      <a href="services.html" class="f-lnk" data-ar="المستقبل الصوتي الذكي" data-en="AI Voice Receptionist">المستقبل الصوتي الذكي</a>
-      <a href="services.html" class="f-lnk" data-ar="مؤهل العملاء المحتملين" data-en="AI Lead Qualifier">مؤهل العملاء المحتملين</a>
-      <a href="services.html" class="f-lnk" data-ar="وكيل خدمة العملاء" data-en="AI Customer Support">وكيل خدمة العملاء</a>
-      <a href="services.html" class="f-lnk" data-ar="جميع الخدمات العشر ←" data-en="View all 10 →">جميع الخدمات العشر ←</a>
+      <a href="services.html" class="f-lnk" data-ar="المستقبل الصوتي" data-en="AI Voice Receptionist">المستقبل الصوتي</a>
+      <a href="services.html" class="f-lnk" data-ar="مؤهل العملاء" data-en="AI Lead Qualifier">مؤهل العملاء</a>
+      <a href="services.html" class="f-lnk" data-ar="جميع الخدمات العشر →" data-en="View all 10 →">جميع الخدمات العشر →</a>
     </div>
     <div>
-      <div class="f-col-t" data-ar="القطاعات" data-en="Industries">القطاعات</div>
+      <div class="f-ct" data-ar="القطاعات" data-en="Industries">القطاعات</div>
       <a href="industries.html" class="f-lnk" data-ar="مكاتب المحاماة" data-en="Law firms">مكاتب المحاماة</a>
       <a href="industries.html" class="f-lnk" data-ar="العيادات الطبية" data-en="Medical clinics">العيادات الطبية</a>
       <a href="industries.html" class="f-lnk" data-ar="شركات العقارات" data-en="Real estate">شركات العقارات</a>
       <a href="industries.html" class="f-lnk" data-ar="شركات الهندسة" data-en="Engineering">شركات الهندسة</a>
-      <a href="industries.html" class="f-lnk" data-ar="الفنادق والضيافة" data-en="Hotels">الفنادق والضيافة</a>
     </div>
     <div>
-      <div class="f-col-t" data-ar="الشركة" data-en="Company">الشركة</div>
+      <div class="f-ct" data-ar="الشركة" data-en="Company">الشركة</div>
       <a href="about.html" class="f-lnk" data-ar="من نحن" data-en="About us">من نحن</a>
       <a href="services.html" class="f-lnk" data-ar="خدماتنا" data-en="Our services">خدماتنا</a>
-      <a href="https://simi448800.github.io/lawfirm_chatbox-/demo.html" target="_blank" class="f-lnk" data-ar="العرض المباشر" data-en="Live demo">العرض المباشر</a>
+      <a href="demo.html" class="f-lnk" data-ar="العرض المباشر" data-en="Live demo">العرض المباشر</a>
       <a href="contact.html" class="f-lnk" data-ar="تواصل معنا" data-en="Contact">تواصل معنا</a>
     </div>
   </div>
@@ -612,248 +664,68 @@ footer{background:#050505;padding:52px 6% 28px;border-top:1px solid rgba(255,255
 </footer>
 
 <script>
-// ── LANGUAGE SYSTEM ──────────────────────────────────────────────────────────
-let currentLang = 'ar';
-
-// Bilingual chatbot greeting
-const GREET = {
-  ar: {
-    msg: 'السلام عليكم! أنا مساعد IA AI Solutions.\n\nأخبرنا عن منشأتكم — ما طبيعة عملكم وما أكبر تحدٍّ تواجهونه حالياً؟',
-    chips: ['مكتب محاماة','عيادة طبية','شركة عقارات','شركة هندسة','أخرى'],
-    placeholder: 'أخبرنا عن منشأتكم…'
-  },
-  en: {
-    msg: 'Hello! I'm the IA AI Solutions assistant.\n\nTell us about your business — what do you do and what's your biggest operational challenge?',
-    chips: ['Law firm','Medical clinic','Real estate','Engineering','Other'],
-    placeholder: 'Tell us about your business…'
-  }
-};
-
-// Bilingual AI system prompt
-const SYS = {
-  ar: `أنت مساعد استقبال أعمال لشركة IA AI Solutions — شركة متخصصة في بناء أنظمة أتمتة مدعومة بالذكاء الاصطناعي للمنشآت السعودية، تشمل: مكاتب المحاماة، العيادات الطبية، شركات العقارات، الشركات الهندسية، الفنادق، ومكاتب المحاسبة.
-
-هدفك إجراء محادثة طبيعية وودية لجمع معلومات شاملة عن منشأة الزائر لإعداد عرض سعر دقيق ومناسب.
-
-اجمع المعلومات التالية تدريجياً عبر المحادثة (لا تسأل أكثر من سؤالين في وقت واحد):
-1. الاسم الكامل والمسمى الوظيفي
-2. اسم المنشأة والقطاع
-3. المدينة والموقع في المملكة
-4. عدد الموظفين
-5. الطريقة الحالية لاستقبال استفسارات العملاء
-6. أكبر تحدٍّ تشغيلي — ما الذي يستهلك أكثر وقت أو مال
-7. هل لديهم موقع إلكتروني وروبوت دردشة
-8. نطاق الإيرادات الشهرية التقريبي
-9. رقم واتساب أو البريد الإلكتروني
-10. أفضل وقت للتواصل
-
-بعد كل رد أضف:
-|||INTAKE|||{"name":"...","org":"...","contact":"...","juris":"...","lang":"ar","area":"IA AI Solutions lead","sum":"...","urg":"normal","dates":"","parties":"","complete":false,"city":"...","staff":"...","challenge":"...","has_website":"...","current_intake":"..."}|||END|||
-
-اضبط complete:true عند الحصول على: الاسم + التواصل + اسم المنشأة + التحدي الرئيسي.
-عند الاكتمال: "شكراً [الاسم]! سنُعدّ لكم عرضاً مخصصاً لـ[المنشأة] ونتواصل معكم على [التواصل] خلال 24 ساعة."
-
-قواعد: رُد دائماً بالعربية · لا تذكر أي علامات تجنية تقنية · 3 جمل كحد أقصى لكل رد`,
-  en: `You are the business intake assistant for IA AI Solutions — a company that builds AI-powered automation systems for Saudi businesses. Gather info about the visitor's business for a tailored proposal. Be warm and conversational — 2-3 sentences max per reply. Collect through conversation: name, title, business name, industry, city, staff count, how they handle enquiries now, biggest challenge, website status, revenue range, contact (WhatsApp or email). Never ask more than 2 questions at once. After every reply: |||INTAKE|||{"name":"...","org":"...","contact":"...","juris":"KSA","lang":"en","area":"IA AI Solutions lead","sum":"...","urg":"normal","dates":"","parties":"","complete":false,"city":"...","staff":"...","challenge":"...","has_website":"...","current_intake":"..."}|||END||| Set complete:true when: name + contact + business + challenge. End with thank you mentioning 24hr proposal.`
-};
-
-function setLang(lang) {
-  currentLang = lang;
-  const isAr = lang === 'ar';
-  const html  = document.documentElement;
-  
-  html.lang = lang;
-  html.dir  = isAr ? 'rtl' : 'ltr';
-  
-  // Toggle buttons
-  document.getElementById('btn-ar').classList.toggle('active', isAr);
-  document.getElementById('btn-en').classList.toggle('active', !isAr);
-  
-  // Update all data-ar / data-en elements
-  document.querySelectorAll('[data-ar]').forEach(el => {
-    const val = isAr ? el.getAttribute('data-ar') : el.getAttribute('data-en');
-    if(!val) return;
-    if(el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-      el.placeholder = val;
-    } else if(el.innerHTML.includes('<')) {
-      el.innerHTML = val;
-    } else {
-      el.textContent = val;
-    }
-  });
-  
-  // Update hero card messages
-  document.getElementById('hc-msgs-ar').style.display = isAr ? '' : 'none';
-  document.getElementById('hc-msgs-en').style.display = isAr ? 'none' : '';
-  
-  // Industry arrows direction
-  const arrows = document.querySelectorAll('.i-arrow');
-  if(arrows.length >= 2) {
-    arrows[0].innerHTML = isAr ? '&#8594;' : '&#8592;';
-    arrows[1].innerHTML = isAr ? '&#8592;' : '&#8594;';
-  }
-  
-  // Update industry tabs
-  document.querySelectorAll('.ind-tab').forEach(tab => {
-    const val = isAr ? tab.getAttribute('data-ar') : tab.getAttribute('data-en');
-    if(val) tab.textContent = val;
-  });
-  
-  // Update chatbot
-  document.getElementById('ia-inp').placeholder = GREET[lang].placeholder;
-  document.getElementById('ia-inp').dir = isAr ? 'rtl' : 'ltr';
-  
-  // Reset and restart chatbot in new language
-  resetChatbot(lang);
-  
-  // Save preference
-  try { localStorage.setItem('ia_lang', lang); } catch(e) {}
+// NAV
+window.addEventListener('scroll',()=>document.querySelector('nav').classList.toggle('scrolled',scrollY>40));
+function toggleNav(){
+  const l=document.querySelector('.nav-links');
+  const open=l.style.display==='flex';
+  l.style.cssText=open?'':'display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:rgba(8,8,8,.97);backdrop-filter:blur(20px);padding:24px 5%;gap:18px;border-bottom:1px solid rgba(184,146,42,.15);z-index:998';
 }
 
-// ── NAV ──────────────────────────────────────────────────────────────────────
-window.addEventListener('scroll', () => document.getElementById('nav').classList.toggle('scrolled', scrollY > 40));
-function toggleNav() {
-  const l = document.getElementById('nav-links');
-  const open = l.style.display === 'flex';
-  l.style.cssText = open ? '' : 'display:flex;flex-direction:column;position:fixed;top:68px;left:0;right:0;background:rgba(8,8,8,.97);backdrop-filter:blur(20px);padding:28px 6%;gap:22px;border-bottom:1px solid rgba(184,146,42,.15);z-index:998';
+// LANGUAGE
+let lang='ar';
+function setLang(l){
+  lang=l;const isAr=l==='ar';
+  document.documentElement.lang=l;
+  document.documentElement.dir=isAr?'rtl':'ltr';
+  document.getElementById('btn-ar').classList.toggle('active',isAr);
+  document.getElementById('btn-en').classList.toggle('active',!isAr);
+  document.querySelectorAll('[data-ar]').forEach(el=>{
+    const v=isAr?el.getAttribute('data-ar'):el.getAttribute('data-en');
+    if(!v)return;
+    if(el.innerHTML.includes('<'))el.innerHTML=v;
+    else el.textContent=v;
+  });
+  document.querySelectorAll('.ind-tab').forEach(t=>{
+    const v=isAr?t.getAttribute('data-ar'):t.getAttribute('data-en');
+    if(v)t.textContent=v;
+  });
+  document.getElementById('hv-ar').style.display=isAr?'':'none';
+  document.getElementById('hv-en').style.display=isAr?'none':'';
+  const arrP=document.getElementById('arr-prev');
+  const arrN=document.getElementById('arr-next');
+  if(arrP){arrP.innerHTML=isAr?'&#8594;':'&#8592;';arrN.innerHTML=isAr?'&#8592;':'&#8594;';}
+  document.querySelectorAll('textarea,.cw-inp').forEach(el=>{el.dir=isAr?'rtl':'ltr';});
+  try{localStorage.setItem('ia_lang',l);}catch(e){}
 }
 
-// ── REVEAL ───────────────────────────────────────────────────────────────────
-const ro = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('v'); }), {threshold: 0.1});
-document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
-
-// ── INDUSTRY CAROUSEL ─────────────────────────────────────────────────────────
-let indCur = 0;
-const indTot = 6;
-let indTimer;
-function showInd(n) {
-  document.getElementById('ind-' + indCur).classList.remove('active');
+// INDUSTRY CAROUSEL
+let indCur=0;const indTot=6;let indTimer;
+function showInd(n){
+  document.getElementById('ind-'+indCur).classList.remove('active');
   document.querySelectorAll('.ind-tab')[indCur].classList.remove('active');
-  indCur = (n + indTot) % indTot;
-  document.getElementById('ind-' + indCur).classList.add('active');
+  indCur=(n+indTot)%indTot;
+  document.getElementById('ind-'+indCur).classList.add('active');
   document.querySelectorAll('.ind-tab')[indCur].classList.add('active');
-  document.getElementById('i-count').textContent = (indCur + 1) + ' / ' + indTot;
-  document.querySelectorAll('.i-dot').forEach((d, i) => d.classList.toggle('active', i === indCur));
-  clearInterval(indTimer);
-  indTimer = setInterval(() => showInd(indCur + 1), 6000);
+  document.getElementById('i-cnt').textContent=(indCur+1)+' / '+indTot;
+  document.querySelectorAll('.i-dot').forEach((d,i)=>d.classList.toggle('active',i===indCur));
+  clearInterval(indTimer);indTimer=setInterval(()=>showInd(indCur+1),6000);
 }
-function indNext() { showInd(indCur + 1); }
-function indPrev() { showInd(indCur - 1); }
-(function() {
-  const dc = document.getElementById('i-dots');
-  for(let i = 0; i < indTot; i++) {
-    const d = document.createElement('div');
-    d.className = 'i-dot' + (i === 0 ? ' active' : '');
-    d.onclick = () => showInd(i);
-    dc.appendChild(d);
+function indNext(){showInd(indCur+1);}
+function indPrev(){showInd(indCur-1);}
+(function(){
+  const dc=document.getElementById('i-dots');
+  for(let i=0;i<indTot;i++){
+    const d=document.createElement('div');d.className='i-dot'+(i===0?' active':'');
+    d.onclick=()=>showInd(i);dc.appendChild(d);
   }
 })();
-indTimer = setInterval(() => showInd(indCur + 1), 6000);
+indTimer=setInterval(()=>showInd(indCur+1),6000);
 
-// ── CHATBOT ───────────────────────────────────────────────────────────────────
-const B = 'https://ia-ai-intake.onrender.com';
-let iaMsgs = [], iaTyping = false, iaDone = false;
-let iaRec = {name:'',org:'',contact:'',juris:'KSA',lang:'ar',area:'IA AI Solutions lead',sum:'',urg:'normal',dates:'',parties:'',city:'',staff:'',challenge:'',has_website:'',current_intake:''};
-let iaTrans = [];
-
-function resetChatbot(lang) {
-  iaMsgs = []; iaTrans = []; iaDone = false;
-  iaRec = {name:'',org:'',contact:'',juris:'KSA',lang,area:'IA AI Solutions lead',sum:'',urg:'normal',dates:'',parties:'',city:'',staff:'',challenge:'',has_website:'',current_intake:''};
-  document.getElementById('ia-msgs').innerHTML = '';
-  iaBot(GREET[lang].msg, GREET[lang].chips);
-}
-
-function iaBot(txt, chips = []) {
-  const c = document.getElementById('ia-msgs');
-  const d = document.createElement('div'); d.className = 'cm b';
-  const isAr = currentLang === 'ar';
-  d.innerHTML = `<div class="cmav">IA</div><div><div class="cm-bbl" style="font-family:var(${isAr ? '--font-ar' : '--font-en'})">${txt.replace(/\n/g, '<br>')}</div>${chips.length ? `<div class="chips">${chips.map(x => `<span class="chip" onclick="iaChip('${x}')">${x}</span>`).join('')}</div>` : ''}</div>`;
-  c.appendChild(d); c.scrollTop = c.scrollHeight;
-  iaTrans.push('A: ' + txt);
-}
-
-function iaUsr(txt) {
-  const c = document.getElementById('ia-msgs');
-  const d = document.createElement('div'); d.className = 'cm u';
-  const isAr = currentLang === 'ar';
-  d.innerHTML = `<div><div class="cm-bbl" style="font-family:var(${isAr ? '--font-ar' : '--font-en'})">${txt}</div></div>`;
-  c.appendChild(d); c.scrollTop = c.scrollHeight;
-  iaTrans.push('C: ' + txt);
-}
-
-function iaShowT() {
-  const c = document.getElementById('ia-msgs');
-  const d = document.createElement('div'); d.className = 'cm b'; d.id = 'ia-t';
-  d.innerHTML = '<div class="cmav">IA</div><div class="tw"><div class="td"></div><div class="td"></div><div class="td"></div></div>';
-  c.appendChild(d); c.scrollTop = c.scrollHeight;
-}
-function iaRmT() { const t = document.getElementById('ia-t'); if(t) t.remove(); }
-
-function iaChip(txt) {
-  document.querySelectorAll('.chip').forEach(c => c.style.pointerEvents = 'none');
-  iaProc(txt);
-}
-
-function iaSend() {
-  const el = document.getElementById('ia-inp');
-  const t = el.value.trim();
-  if(!t || iaTyping) return;
-  el.value = ''; el.style.height = 'auto';
-  iaProc(t);
-}
-
-function iaProc(txt) { iaUsr(txt); iaMsgs.push({role:'user',content:txt}); iaCall(); }
-function iaKey(e) { if(e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); iaSend(); } }
-function iaResize(el) { el.style.height = 'auto'; el.style.height = Math.min(el.scrollHeight, 52) + 'px'; }
-
-async function iaCall() {
-  iaTyping = true; document.getElementById('ia-send').disabled = true; iaShowT();
-  try {
-    const r = await fetch(`${B}/chat`, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({messages: iaMsgs, system_override: SYS[currentLang]})});
-    const data = await r.json();
-    if(data.error) throw new Error(data.error);
-    let reply = data.reply || 'Please try again.';
-    const m = reply.match(/\|\|\|INTAKE\|\|\|({.*?})\|\|\|END\|\|\|/s);
-    if(m) {
-      try {
-        const p = JSON.parse(m[1]);
-        const was = iaDone;
-        Object.keys(p).forEach(k => { if(p[k] && p[k] !== '...' && String(p[k]).trim() && k !== 'complete') iaRec[k] = p[k]; });
-        if(p.complete === true && !was) { iaDone = true; iaFire(); }
-      } catch(e) {}
-      reply = reply.replace(/\|\|\|INTAKE\|\|\|.*?\|\|\|END\|\|\|/s, '').trim();
-    }
-    iaMsgs.push({role:'assistant',content:reply});
-    iaRmT(); iaBot(reply);
-  } catch(e) {
-    iaRmT();
-    iaBot(currentLang === 'ar' ? 'عذراً، هناك مشكلة تقنية. يرجى التواصل معنا على hello@ia-aisolutions.com' : 'Connection issue — please email hello@ia-aisolutions.com directly.');
-  }
-  iaTyping = false; document.getElementById('ia-send').disabled = false;
-}
-
-async function iaFire() {
-  try {
-    await fetch(`${B}/ia-intake`, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({intake: iaRec, transcript: iaTrans.join('\n')})});
-  } catch(e) {}
-}
-
-// ── INIT ──────────────────────────────────────────────────────────────────────
-(function() {
-  // Check saved preference, default to Arabic
-  let savedLang = 'ar';
-  try { savedLang = localStorage.getItem('ia_lang') || 'ar'; } catch(e) {}
-  
-  // Set initial button states
-  document.getElementById('btn-ar').classList.toggle('active', savedLang === 'ar');
-  document.getElementById('btn-en').classList.toggle('active', savedLang === 'en');
-  
-  if(savedLang === 'en') {
-    setLang('en');
-  } else {
-    // Arabic is default — just init chatbot
-    resetChatbot('ar');
-  }
+// INIT LANG
+(function(){
+  let saved='ar';try{saved=localStorage.getItem('ia_lang')||'ar';}catch(e){}
+  if(saved==='en')setLang('en');
 })();
 </script>
 </body>
